@@ -1,2 +1,2 @@
-# swarm
- A swarm clone to learn Godot
+# Swarm
+ A Swarm game clone to learn Godot.
