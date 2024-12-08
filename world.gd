@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var health_bar: TextureProgressBar = $HealthBar
+const Enemy_Goblin = preload("res://enemy_goblin.tscn")
 
 var health_bar_offset = Vector2(-33, -55)
 
@@ -9,6 +10,10 @@ func _ready() -> void:
 	health_bar.max_value = $Player.max_health
 	health_bar.value = $Player.current_health
 	health_bar.scale = Vector2(2, 2)
+	
+	# Create an enemy mob
+	var new_enemy_goblin = Enemy_Goblin.instantiate()
+	add_child(new_enemy_goblin)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
