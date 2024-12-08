@@ -24,5 +24,6 @@ func _process(delta: float) -> void:
 		hide()
 		$Hurtbox.set_deferred("disabled", true)
 
+
 func take_damage(damage):
 	current_health -= damage
