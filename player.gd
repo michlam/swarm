@@ -11,7 +11,7 @@ func _ready() -> void:
 	# Spawn player in the center of the screen
 	screen_size = get_viewport_rect().size
 	position = 0.5 * screen_size
-	
+
 
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -48,6 +48,7 @@ func _process(delta: float) -> void:
 			scale.x = -0.65
 		else:
 			scale.x = 0.65
+
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
