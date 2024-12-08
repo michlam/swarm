@@ -14,6 +14,12 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	# Check for scroll wheel for camera:
+	if Input.is_action_just_released("scroll_in"):
+		$Camera2D.zoom *= 1.05
+	elif Input.is_action_just_released("scroll_out"):
+		$Camera2D.zoom *= 0.95
+	
 	var velocity = Vector2.ZERO # The player's movement vector.
 	
 	if !is_attacking: # If already attacking, don't process any other movements
