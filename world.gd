@@ -23,19 +23,23 @@ func _process(delta: float) -> void:
 	process_animation_helper()
 
 
-
 func process_healthbar_helper():
 		# Handle health bar always above player
 	health_bar.position = $Player.position + health_bar_offset
 	
 	
 func process_movement_helper(delta):
-	pass
 	for enemy in enemies:
-		# Handle the enemy goblin moving towards the player
-		var to_player_direction = $Player.get_position() - enemy.get_position()
-		enemy.velocity = to_player_direction.normalized() * 30 * delta 
-		var collision = enemy.move_and_collide(enemy.velocity)
+		# Check for enemy deaths
+		if enemy.current_health <= 0:
+			enemy.death_handler()
+			remove_child(enemy)
+			enemies = get_tree().get_nodes_in_group("enemies")
+		else:
+			# Handle the enemy goblin moving towards the player
+			var to_player_direction = $Player.get_position() - enemy.get_position()
+			enemy.velocity = to_player_direction.normalized() * 30 * delta 
+			var collision = enemy.move_and_collide(enemy.velocity)
 	
 func process_animation_helper():
 	health_bar.value = $Player.current_health
@@ -46,6 +50,5 @@ func _on_mob_timer_timeout() -> void:
 	add_child(enemy_goblin) 
 	enemy_goblin.add_to_group("enemies")
 	enemies = get_tree().get_nodes_in_group("enemies")
-	print(enemies)
 	
-	print("Test")
+	print(enemies)
