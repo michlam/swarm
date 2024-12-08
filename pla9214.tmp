@@ -338,6 +338,7 @@ height = 67.6923
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.65, 0.65)
 script = ExtResource("1_0mebj")
+speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gp387")

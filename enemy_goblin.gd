@@ -7,6 +7,7 @@ extends CharacterBody2D
 var screen_size
 var is_attacking = false
 var max_health = 100
+var current_health = 100
 
 func _ready() -> void:
 	# Spawn enemy
@@ -17,3 +18,11 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.play("Walk")
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+	
+	# Handle death
+	if current_health <= 0:
+		hide()
+		$Hurtbox.set_deferred("disabled", true)
+
+func take_damage(damage):
+	current_health -= damage

@@ -2,14 +2,12 @@ extends Node2D
 
 @onready var health_bar: TextureProgressBar = $HealthBar
 
-var current_health = 100
-var max_health = 100
 var health_bar_offset = Vector2(-33, -55)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health_bar.max_value = max_health
-	health_bar.value = current_health
+	health_bar.max_value = $Player.max_health
+	health_bar.value = $Player.current_health
 	health_bar.scale = Vector2(2, 2)
 
 
@@ -17,6 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	process_healthbar_helper()
 	process_movement_helper(delta)
+	process_animation_helper()
 
 
 func process_healthbar_helper():
@@ -30,10 +29,5 @@ func process_movement_helper(delta):
 	$Enemy_Goblin.velocity = to_player_direction.normalized() * 30 * delta 
 	var collision = $Enemy_Goblin.move_and_collide($Enemy_Goblin.velocity)
 	
-	if collision:
-		health_bar.value -= 1
-		print(health_bar.value)
-
-	if health_bar.value == 0:
-		print("Lol you dead n00b")
-	
+func process_animation_helper():
+	health_bar.value = $Player.current_health
