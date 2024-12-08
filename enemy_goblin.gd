@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var speed = 250
 var screen_size
 var is_attacking = false
+var max_health = 100
 
 func _ready() -> void:
 	# Spawn enemy

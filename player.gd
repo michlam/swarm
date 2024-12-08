@@ -56,6 +56,5 @@ func _process(delta: float) -> void:
 			scale.x = 0.65
 
 
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	is_attacking = false
