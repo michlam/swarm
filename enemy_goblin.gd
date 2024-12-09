@@ -25,7 +25,7 @@ func take_damage(damage):
 	current_health -= damage
 	var damage_number = damage_number_scene.instantiate()
 	add_child(damage_number) 
-	damage_number.set_values_and_animate(damage, Vector2(0, -30), 30)
+	damage_number.set_values_and_animate(damage, Vector2(0, -70), 0)
 	
 func death_handler():
 	hide()
