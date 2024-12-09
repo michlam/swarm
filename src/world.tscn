@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=4 uid="uid://bgyxcpu36x6pu"]
 
-[ext_resource type="PackedScene" uid="uid://ctn1cfxkbe0fq" path="res://tile_map_layer.tscn" id="1_5wu2h"]
-[ext_resource type="Script" path="res://world.gd" id="1_n04aa"]
-[ext_resource type="PackedScene" uid="uid://cpiyiuhygd1a7" path="res://enemy_goblin.tscn" id="2_54xj3"]
-[ext_resource type="PackedScene" uid="uid://b00kmqfbfo4jv" path="res://player.tscn" id="2_e0rbl"]
+[ext_resource type="PackedScene" uid="uid://ctn1cfxkbe0fq" path="res://src/tile_map_layer.tscn" id="1_5wu2h"]
+[ext_resource type="Script" path="res://src/world.gd" id="1_n04aa"]
+[ext_resource type="PackedScene" uid="uid://cpiyiuhygd1a7" path="res://src/enemy_goblin.tscn" id="2_54xj3"]
+[ext_resource type="PackedScene" uid="uid://b00kmqfbfo4jv" path="res://src/player.tscn" id="2_e0rbl"]
 [ext_resource type="Texture2D" uid="uid://cpluglcqplr6i" path="res://Assets/Art/Terrain/Ground/Shadows.png" id="3_115bq"]
 [ext_resource type="Texture2D" uid="uid://db4dpj1666stt" path="res://Assets/Art/Terrain/Ground/Tilemap_Elevation.png" id="4_kdkbl"]
 [ext_resource type="Texture2D" uid="uid://c6cr04nxnwx7i" path="res://Assets/Art/Terrain/Ground/Tilemap_Flat.png" id="5_af85d"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d2vxxr1xntrif" path="res://Assets/Art/UI/progress bar most rounded over.png" id="6_sdk2o"]
 [ext_resource type="Texture2D" uid="uid://c81get262v7d6" path="res://Assets/Art/UI/progress bar most rounded progress red.png" id="7_bineq"]
 [ext_resource type="Texture2D" uid="uid://d2640bh46wj3e" path="res://Assets/Art/UI/progress bar most rounded progress orange.png" id="8_y3ljs"]
-[ext_resource type="PackedScene" uid="uid://dqcy7xkiu5nrk" path="res://gui_time.tscn" id="12_clwh7"]
+[ext_resource type="PackedScene" uid="uid://dqcy7xkiu5nrk" path="res://src/gui_time.tscn" id="12_clwh7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyodg"]
 texture = ExtResource("3_115bq")

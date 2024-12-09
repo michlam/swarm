@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://b00kmqfbfo4jv"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_0mebj"]
+[ext_resource type="Script" path="res://src/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gak8d"]

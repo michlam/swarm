@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://cpiyiuhygd1a7"]
 
-[ext_resource type="Script" path="res://enemy_goblin.gd" id="1_gh0bu"]
+[ext_resource type="Script" path="res://src/enemy_goblin.gd" id="1_gh0bu"]
 [ext_resource type="Texture2D" uid="uid://dx75oy0dmu4g" path="res://Assets/Art/Characters/Torch_Purple.png" id="2_8i3fw"]
-[ext_resource type="PackedScene" uid="uid://bjo24vg80nft8" path="res://damage_number.tscn" id="2_65w0i"]
+[ext_resource type="PackedScene" uid="uid://bjo24vg80nft8" path="res://src/damage_number.tscn" id="2_65w0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21mhh"]
 atlas = ExtResource("2_8i3fw")
