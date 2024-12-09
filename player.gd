@@ -46,10 +46,8 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("Idle")
 		
 	position += velocity * delta
-	# position = position.clamp(Vector2.ZERO, screen_size)
 	
 	if velocity.x != 0:
-		#$AnimatedSprite2D.flip_h = velocity.x < 0
 		if velocity.x < 0:
 			scale.x = -0.65
 		else:
@@ -62,7 +60,6 @@ func process_zooming():
 	elif Input.is_action_just_released("scroll_out"):
 		$Camera2D.zoom *= 0.95
 	
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	is_attacking = false
 
