@@ -14,7 +14,6 @@ var melee_damage = 40
 func _ready() -> void:
 	# Spawn player in the center of the screen
 	screen_size = get_viewport_rect().size
-	position = 0.5 * screen_size
 
 
 func _process(delta: float) -> void:
