@@ -57,7 +57,9 @@ func process_zooming():
 	if Input.is_action_just_released("scroll_in"):
 		$Camera2D.zoom *= 1.05
 	elif Input.is_action_just_released("scroll_out"):
-		$Camera2D.zoom *= 0.95
+		if $Camera2D.zoom.x > 0.96:
+			$Camera2D.zoom *= 0.95
+
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	is_attacking = false
