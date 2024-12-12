@@ -12,7 +12,7 @@ var melee_damage = 40
 
 func _ready() -> void:
 	# Spawn player in the center of the screen
-	screen_size = get_viewport_rect().size
+	check_screen_size()
 
 func _process(delta: float) -> void:
 	process_zooming()
@@ -38,3 +38,6 @@ func _on_melee_hitbox_area_body_entered(body: Node2D) -> void:
 	
 func take_damage(damage):
 	current_health -= damage
+	
+func check_screen_size():
+	screen_size = get_viewport_rect().size

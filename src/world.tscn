@@ -6019,7 +6019,6 @@ sources/1 = SubResource("TileSetAtlasSource_88tm2")
 sources/2 = SubResource("TileSetAtlasSource_hxwmx")
 
 [node name="world" type="Node2D"]
-z_index = 5
 script = ExtResource("1_n04aa")
 enemy_goblin_scene = ExtResource("2_54xj3")
 
