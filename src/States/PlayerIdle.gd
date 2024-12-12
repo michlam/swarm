@@ -9,8 +9,7 @@ func Enter():
 	sprite.play("Idle")
 	if player:
 		player.velocity = Vector2.ZERO
-	
-	
+
 func Update(delta):
 	if Input.is_action_pressed("click_attack"):
 		Transitioned.emit(self, "clickattack")
@@ -19,4 +18,3 @@ func Update(delta):
 		
 func Physics_Update(delta):
 	pass
-	
