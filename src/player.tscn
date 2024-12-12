@@ -1,7 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=36 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
+[ext_resource type="Script" path="res://src/States/State_Machine.gd" id="3_vu6g4"]
+[ext_resource type="Script" path="res://src/States/PlayerIdle.gd" id="4_ai76x"]
+[ext_resource type="Script" path="res://src/States/PlayerWalk.gd" id="5_u7ooh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gak8d"]
 atlas = ExtResource("1_y8u2o")
@@ -362,6 +365,22 @@ rotation = 3.14159
 shape = SubResource("CapsuleShape2D_fvdqn")
 disabled = true
 debug_color = Color(0.956863, 0.2, 0.0941176, 0.678431)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_vu6g4")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "ap", "sprite")]
+script = ExtResource("4_ai76x")
+player = NodePath("../..")
+ap = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "ap", "sprite")]
+script = ExtResource("5_u7ooh")
+player = NodePath("../..")
+ap = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../AnimatedSprite2D")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Melee_Hitbox_Area" to="." method="_on_melee_hitbox_area_body_entered"]

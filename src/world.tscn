@@ -6072,7 +6072,7 @@ tile_set = SubResource("TileSet_xy77c")
 
 [node name="Player" parent="." instance=ExtResource("2_e0rbl")]
 y_sort_enabled = true
-position = Vector2(699, 2145)
+position = Vector2(348, 421)
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 top_level = true

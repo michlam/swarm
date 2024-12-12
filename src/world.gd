@@ -50,5 +50,3 @@ func _on_mob_timer_timeout() -> void:
 	add_child(enemy_goblin) 
 	enemy_goblin.add_to_group("enemies")
 	enemies = get_tree().get_nodes_in_group("enemies")
-	
-	print(enemies)

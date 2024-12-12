@@ -22,10 +22,10 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
 func take_damage(damage):
-	current_health -= damage
 	var damage_number = damage_number_scene.instantiate()
 	add_child(damage_number) 
 	damage_number.set_values_and_animate(damage, Vector2(0, -70), 0)
+	current_health -= damage
 	
 func death_handler():
 	hide()
