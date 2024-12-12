@@ -26,8 +26,7 @@ func _process(delta: float) -> void:
 	seconds = seconds % 60
 	minutes = minutes % 60
 	
-	print_debug(str(minutes), ":", str(seconds))
 	var seconds_string = "0" + str(seconds)	
 	var minutes_string = "0" + str(minutes)
-	print(minutes_string.right(2) + ":" + seconds_string.right(2))
+
 	time_label.text = minutes_string.right(2) + ":" + seconds_string.right(2) 

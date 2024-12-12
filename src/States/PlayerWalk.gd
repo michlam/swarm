@@ -10,7 +10,9 @@ func Enter():
 	
 func Update(delta):
 	if !Input.is_anything_pressed():
-		Transitioned.emit(self, "idle")
+		Transitioned.emit(self, "idle")	
+	elif Input.is_action_pressed("click_attack"):
+		Transitioned.emit(self, "clickattack")
 	
 func Physics_Update(delta):
 	# Handle basic movement based on key input

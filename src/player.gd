@@ -5,7 +5,6 @@ extends CharacterBody2D
 ######################
 @export var speed = 250
 var screen_size
-var is_attacking = false
 
 var current_health = 100
 var max_health = 100
@@ -18,21 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	process_zooming()
 
-	#if Input.is_action_pressed("click_attack"):
-		#is_attacking = true
-		#velocity = Vector2.ZERO
-
-	#if is_attacking:
-		#$AnimatedSprite2D.play("Attack_Hori_1")
-		#$AnimationPlayer.play("Attack_Hori_1")
-	#elif velocity.length() > 0:
-		#velocity = velocity.normalized() * speed
-		#$AnimatedSprite2D.play("Walk")
-	#else:
-		#$AnimatedSprite2D.play("Idle")
-		#
-	#position += velocity * delta
-	#
+	# Change player facing direction
 	if velocity.x != 0:
 		if velocity.x < 0:
 			scale.x = -0.65
@@ -46,10 +31,6 @@ func process_zooming():
 	elif Input.is_action_just_released("scroll_out"):
 		if $Camera2D.zoom.x > 0.96:
 			$Camera2D.zoom *= 0.95
-
-	
-#func _on_animated_sprite_2d_animation_finished() -> void:
-	#is_attacking = false
 
 func _on_melee_hitbox_area_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage") && body.name != "Player":
