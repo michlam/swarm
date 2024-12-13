@@ -96,6 +96,7 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_1mxvf"]
+resource_local_to_scene = true
 font = ExtResource("2_dh04n")
 font_size = 600
 font_color = Color(1, 0, 0, 1)

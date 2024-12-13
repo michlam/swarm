@@ -8,8 +8,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func set_values_and_animate(value, start_pos, height):
+func set_values_and_animate(value, start_pos, height, colour):
 	$Label_Container/Label.text = str(value)
+	$Label_Container/Label.label_settings.font_color = Color(colour)
 	$AnimationPlayer.play("Damage_Number")
 	
 	var tween = get_tree().create_tween()

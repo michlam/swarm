@@ -1,0 +1,49 @@
+extends Node
+
+# Possible element status is None, Fire, Water, and Ice.
+# Wind is not a status element, but only an applied element.
+@onready var status = "None"
+
+# There is a cooldown to elemental application. After a REACTION, there can be no application for
+# the duration of the ICD
+var on_cooldown = false
+
+func _ready() -> void:
+	pass
+
+
+# Applies the elemental reaction based on current status. 
+# Updates status, creates reaction damage nodes, updates ICD timer
+# Returns any damage multiplier
+func apply_element(applied_element: String) -> float:
+	if applied_element == "None":
+		return 1.0
+	if on_cooldown || status == applied_element || status == "None":
+		status = applied_element
+		return 1.0
+	else:
+		# A REACTION HAPPENED!
+		$ICD.start()
+		on_cooldown = true
+		return 2.0
+	
+
+func get_element_colour(element: String) -> Color:
+	var color_string = "WHITE" # Physical damage
+	
+	if element == "Fire":
+		color_string = "ORANGE_RED"
+	elif element == "Water":
+		color_string = "ROYAL_BLUE"
+	elif element == "ICE":
+		color_string = "LIGHT_STEEL_BLUE"
+	elif element == "Wind":
+		color_string = "LIGHT_SEA_GREEN"
+	
+	
+	return Color(color_string)
+
+
+func _on_icd_timeout() -> void:
+	print("ICD Timeout Over")
+	on_cooldown = false

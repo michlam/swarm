@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpiyiuhygd1a7"]
+[gd_scene load_steps=20 format=3 uid="uid://cpiyiuhygd1a7"]
 
 [ext_resource type="Script" path="res://src/Enemy Goblin/enemy_goblin.gd" id="1_gh0bu"]
 [ext_resource type="Texture2D" uid="uid://dx75oy0dmu4g" path="res://Assets/Art/Characters/Torch_Purple.png" id="2_8i3fw"]
 [ext_resource type="PackedScene" uid="uid://bjo24vg80nft8" path="res://src/Damage Number/damage_number.tscn" id="2_65w0i"]
+[ext_resource type="Script" path="res://src/Enemy Goblin/element_status.gd" id="4_usv1j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21mhh"]
 atlas = ExtResource("2_8i3fw")
@@ -124,3 +125,12 @@ frame_progress = 0.742857
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yvepu")
+
+[node name="ElementStatus" type="Node" parent="."]
+script = ExtResource("4_usv1j")
+
+[node name="ICD" type="Timer" parent="ElementStatus"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="ElementStatus/ICD" to="ElementStatus" method="_on_icd_timeout"]

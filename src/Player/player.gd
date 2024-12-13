@@ -34,7 +34,7 @@ func process_zooming():
 
 func _on_melee_hitbox_area_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage") && body.name != "Player":
-		body.take_damage(40)
+		body.take_damage(40, "None")
 	
 func take_damage(damage):
 	current_health -= damage
