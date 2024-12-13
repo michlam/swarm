@@ -11,11 +11,6 @@ var found_mouse_position = false
 var mouse_position
 var direction
 
-#func _input(event):
-	#if (event is InputEventMouseButton) && !found_mouse_position:
-		#mouse_position = event.position
-		#direction = find_direction().normalized()
-		#found_mouse_position = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -44,7 +44,6 @@ animations = [{
 }]
 
 [node name="Wind_Blade" type="Area2D" node_paths=PackedStringArray("sprite")]
-visible = false
 scale = Vector2(2, 2)
 script = ExtResource("1_mxs7j")
 sprite = NodePath("AnimatedSprite2D")
@@ -57,7 +56,7 @@ shape = SubResource("CapsuleShape2D_xi7ni")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xgciw")
 animation = &"Default"
-frame_progress = 0.0350474
+frame_progress = 0.544236
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
