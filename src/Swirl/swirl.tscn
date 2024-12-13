@@ -213,7 +213,7 @@ script = ExtResource("1_u4n50")
 scale = Vector2(3.2, 4)
 sprite_frames = SubResource("SpriteFrames_sslkr")
 animation = &"Water"
-frame_progress = 0.12133
+frame_progress = 0.375461
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
@@ -223,3 +223,5 @@ shape = SubResource("CircleShape2D_f7yje")
 libraries = {
 "": SubResource("AnimationLibrary_fuvre")
 }
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,7 +3,7 @@ extends Node
 # Possible element status is None, Fire, Water, and Ice.
 # Wind is not a status element, but only an applied element.
 const status_elements = ["Fire", "Water", "Ice"]
-@onready var status = "Fire"
+@onready var status = "Fire" # For testing purposes
 @export var enemy_sprite: AnimatedSprite2D
 
 # Reaction scenes
@@ -30,8 +30,8 @@ func get_element_colour(element: String) -> Color:
 		color_string = "ORANGE_RED"
 	elif element == "Water":
 		color_string = "ROYAL_BLUE"
-	elif element == "ICE":
-		color_string = "LIGHT_STEEL_BLUE"
+	elif element == "Ice":
+		color_string = "POWDER_BLUE"
 	elif element == "Wind":
 		color_string = "LIGHT_SEA_GREEN"
 	
