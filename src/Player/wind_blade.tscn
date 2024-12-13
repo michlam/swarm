@@ -43,8 +43,11 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Wind_Blade" type="Area2D"]
+[node name="Wind_Blade" type="Area2D" node_paths=PackedStringArray("sprite")]
+visible = false
+scale = Vector2(2, 2)
 script = ExtResource("1_mxs7j")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, 7.15256e-07)
@@ -54,4 +57,15 @@ shape = SubResource("CapsuleShape2D_xi7ni")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xgciw")
 animation = &"Default"
-frame_progress = 0.901008
+frame_progress = 0.733956
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

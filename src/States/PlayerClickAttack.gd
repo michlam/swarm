@@ -17,6 +17,9 @@ func Enter():
 	player.velocity = Vector2.ZERO
 	find_attack_direction()
 	
+	var wind_blade_temp = wind_blade_scene.instantiate()
+	add_child(wind_blade_temp) 
+	
 func Update(delta):
 	pass
 	
