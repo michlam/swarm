@@ -16,3 +16,10 @@ func set_values_and_animate(start_pos, swirl_damage, status):
 	position = start_pos
 	print(position)
 	$AnimatedSprite2D.play(status)
+	$AnimationPlayer.play("Default")
+
+func remove():
+	$AnimationPlayer.stop()
+	if is_inside_tree():
+		get_parent().remove_child(self)
+		queue_free()
