@@ -9,10 +9,6 @@ class_name ClickAttack
 
 var mouse_position
 
-func _input(event):
-	if event is InputEventMouseButton:
-		mouse_position = event.position
-
 func Enter():
 	player.velocity = Vector2.ZERO
 	find_attack_direction()
@@ -34,6 +30,8 @@ func find_attack_direction():
 	player.check_screen_size()
 	var screen_center = player.screen_size / 2
 	var slope = player.screen_size.y / player.screen_size.x
+	
+	mouse_position = get_viewport().get_mouse_position()
 	
 	# Determine zone, like an X on the screen
 	if abs(mouse_position.y - screen_center.y) < slope * abs(mouse_position.x - screen_center.x):

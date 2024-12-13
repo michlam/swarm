@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dpgi2bk0vpt1c"]
 
-[ext_resource type="Script" path="res://wind_blade.gd" id="1_mxs7j"]
+[ext_resource type="Script" path="res://src/Player/wind_blade.gd" id="1_mxs7j"]
 [ext_resource type="Texture2D" uid="uid://dqw28uv35aef2" path="res://Assets/Art/Projectiles/Green Projectiles.png" id="2_w1gxj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xi7ni"]
@@ -57,7 +57,7 @@ shape = SubResource("CapsuleShape2D_xi7ni")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xgciw")
 animation = &"Default"
-frame_progress = 0.733956
+frame_progress = 0.0350474
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
