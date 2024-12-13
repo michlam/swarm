@@ -67,7 +67,7 @@ func apply_element(applied_element: String) -> float:
 			add_child(swirl) 
 			
 			# Set the swirl position, damage, and type
-			swirl.set_values_and_animate(swirl_damage, status)
+			swirl.set_values_and_animate(enemy_sprite.global_position, swirl_damage, status)
 			#current_health -= damage
 			
 

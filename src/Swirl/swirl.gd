@@ -5,12 +5,14 @@ var element = "Fire"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position = Vector2.ZERO
+	top_level = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
-func set_values_and_animate(swirl_damage, status): 
+func set_values_and_animate(start_pos, swirl_damage, status): 
+	position = start_pos
+	print(position)
 	$AnimatedSprite2D.play(status)
