@@ -5,6 +5,8 @@ class_name ClickAttack
 @export var ap: AnimationPlayer
 @export var sprite: AnimatedSprite2D
 
+@export var wind_blade_scene: PackedScene
+
 var mouse_position
 
 func _input(event):

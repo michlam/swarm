@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=3 uid="uid://b00kmqfbfo4jv"]
 
-[ext_resource type="Script" path="res://src/player.gd" id="1_0mebj"]
+[ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
 [ext_resource type="Script" path="res://src/States/State_Machine.gd" id="3_vu6g4"]
 [ext_resource type="Script" path="res://src/States/PlayerIdle.gd" id="4_ai76x"]

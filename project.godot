@@ -16,7 +16,7 @@ warnings/check_angle_interpolation_type_conflicting=false
 [application]
 
 config/name="Swarm"
-run/main_scene="res://src/world.tscn"
+run/main_scene="res://src/World/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://src/icon.svg"
 
