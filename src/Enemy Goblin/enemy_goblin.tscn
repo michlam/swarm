@@ -58,6 +58,7 @@ atlas = ExtResource("2_8i3fw")
 region = Rect2(960, 192, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c0o1m"]
+resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -126,8 +127,9 @@ frame_progress = 0.742857
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yvepu")
 
-[node name="ElementStatus" type="Node" parent="."]
+[node name="ElementStatus" type="Node" parent="." node_paths=PackedStringArray("enemy_sprite")]
 script = ExtResource("4_usv1j")
+enemy_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="ICD" type="Timer" parent="ElementStatus"]
 wait_time = 2.0
