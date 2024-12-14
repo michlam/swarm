@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf02j3fmly2rl"]
+
+[ext_resource type="Script" path="res://src/Projectiles/water_ability.gd" id="1_1jnyv"]
+[ext_resource type="Texture2D" uid="uid://sxha76j50a8p" path="res://Assets/Art/Projectiles/Dark Blue Projectiles.png" id="1_w4s01"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me4ou"]
+atlas = ExtResource("1_w4s01")
+region = Rect2(256, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46cle"]
+atlas = ExtResource("1_w4s01")
+region = Rect2(272, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh88y"]
+atlas = ExtResource("1_w4s01")
+region = Rect2(288, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4brq"]
+atlas = ExtResource("1_w4s01")
+region = Rect2(304, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ffxmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me4ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46cle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh88y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4brq")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idyi0"]
+size = Vector2(14, 14)
+
+[node name="Water_Ability" type="Area2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(3, 3)
+script = ExtResource("1_1jnyv")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ffxmf")
+animation = &"Default"
+frame_progress = 0.381966
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_idyi0")
+
+[node name="ReturnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ReturnTimer" to="." method="_on_return_timer_timeout"]

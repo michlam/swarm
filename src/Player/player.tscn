@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=57 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/States/PlayerAbility.gd" id="9_37i3d"]
 [ext_resource type="PackedScene" uid="uid://bq31k60eyhxu4" path="res://src/Projectiles/fire_ability.tscn" id="10_7jcam"]
 [ext_resource type="PackedScene" uid="uid://btjuhr1a28d4q" path="res://src/Projectiles/ice_ability.tscn" id="11_yy8k6"]
+[ext_resource type="PackedScene" uid="uid://cf02j3fmly2rl" path="res://src/Projectiles/water_ability.tscn" id="12_sxiw7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26lvp"]
 atlas = ExtResource("1_y8u2o")
@@ -638,6 +639,7 @@ player_stats = NodePath("../../Stats")
 ability_timer = NodePath("../../Stats/AbilityTimer")
 fire_ability_scene = ExtResource("10_7jcam")
 ice_ability_scene = ExtResource("11_yy8k6")
+water_ability_scene = ExtResource("12_sxiw7")
 
 [connection signal="timeout" from="Stats/ElementSwitchTimer" to="Stats" method="_on_element_switch_timer_timeout"]
 [connection signal="timeout" from="Stats/AbilityTimer" to="StateMachine/Idle" method="_on_ability_timer_timeout"]

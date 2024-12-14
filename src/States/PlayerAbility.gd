@@ -7,6 +7,7 @@ class_name Ability
 
 @export var fire_ability_scene: PackedScene
 @export var ice_ability_scene: PackedScene
+@export var water_ability_scene: PackedScene
 var ability_scene
 
 func Enter():
@@ -21,11 +22,10 @@ func Enter():
 	if player_stats.current_element == "Ice":
 		ability_scene = ice_ability_scene.instantiate()
 		add_child(ability_scene)
-	
-	# Find attack direction
-	# Determine which elemental ability to use
-	# Instantiate the correct ability scene
-	pass
+		
+	if player_stats.current_element == "Water":
+		ability_scene = water_ability_scene.instantiate()
+		add_child(ability_scene)
 	
 func Exit():
 	pass
