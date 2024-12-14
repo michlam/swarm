@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=56 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dpgi2bk0vpt1c" path="res://src/wind_blade.tscn" id="7_kmbla"]
 [ext_resource type="Script" path="res://src/States/PlayerAbility.gd" id="9_37i3d"]
 [ext_resource type="PackedScene" uid="uid://bq31k60eyhxu4" path="res://src/Projectiles/fire_ability.tscn" id="10_7jcam"]
+[ext_resource type="PackedScene" uid="uid://btjuhr1a28d4q" path="res://src/Projectiles/ice_ability.tscn" id="11_yy8k6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26lvp"]
 atlas = ExtResource("1_y8u2o")
@@ -630,6 +631,7 @@ script = ExtResource("9_37i3d")
 player = NodePath("../..")
 player_stats = NodePath("../../Stats")
 fire_ability_scene = ExtResource("10_7jcam")
+ice_ability_scene = ExtResource("11_yy8k6")
 
 [connection signal="timeout" from="Stats/ElementSwitchTimer" to="Stats" method="_on_element_switch_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/ClickAttack" method="_on_animated_sprite_2d_animation_finished"]

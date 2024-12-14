@@ -226,8 +226,8 @@ ap = NodePath("AnimationPlayer")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_yf73g")
-animation = &"Explode"
-frame_progress = 0.520907
+animation = &"Default"
+frame_progress = 0.243001
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_waebu")
