@@ -2,6 +2,7 @@ extends State
 class_name Walk
 
 @export var player: CharacterBody2D
+@export var stats: Node2D
 @export var ap: AnimationPlayer
 @export var sprite: AnimatedSprite2D
 
@@ -11,8 +12,6 @@ func Enter():
 func Update(delta):
 	if !Input.is_anything_pressed():
 		Transitioned.emit(self, "idle")
-	elif Input.is_action_just_pressed("ability"):
-		Transitioned.emit(self, "ability")
 	elif Input.is_action_pressed("click_attack"):
 		Transitioned.emit(self, "clickattack")
 	
@@ -28,5 +27,9 @@ func Physics_Update(delta):
 	if Input.is_action_pressed("move_up"):
 		player.velocity.y -= 1
 		
-	player.velocity = player.velocity.normalized() * player.speed
+	player.velocity = player.velocity.normalized() * stats.speed
 	player.position += player.velocity * delta
+
+
+func _on_ability_timer_timeout() -> void:
+	Transitioned.emit(self, "ability")

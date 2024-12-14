@@ -576,6 +576,10 @@ script = ExtResource("2_7htfl")
 [node name="ElementSwitchTimer" type="Timer" parent="Stats"]
 wait_time = 0.1
 
+[node name="AbilityTimer" type="Timer" parent="Stats"]
+wait_time = 3.0
+autostart = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -0.00313293
 sprite_frames = SubResource("SpriteFrames_gp387")
@@ -613,9 +617,10 @@ player = NodePath("../..")
 ap = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite2D")
 
-[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "ap", "sprite")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "stats", "ap", "sprite")]
 script = ExtResource("5_u7ooh")
 player = NodePath("../..")
+stats = NodePath("../../Stats")
 ap = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite2D")
 
@@ -626,13 +631,17 @@ ap = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite2D")
 wind_blade_scene = ExtResource("7_kmbla")
 
-[node name="Ability" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats")]
+[node name="Ability" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats", "ability_timer")]
 script = ExtResource("9_37i3d")
 player = NodePath("../..")
 player_stats = NodePath("../../Stats")
+ability_timer = NodePath("../../Stats/AbilityTimer")
 fire_ability_scene = ExtResource("10_7jcam")
 ice_ability_scene = ExtResource("11_yy8k6")
 
 [connection signal="timeout" from="Stats/ElementSwitchTimer" to="Stats" method="_on_element_switch_timer_timeout"]
+[connection signal="timeout" from="Stats/AbilityTimer" to="StateMachine/Idle" method="_on_ability_timer_timeout"]
+[connection signal="timeout" from="Stats/AbilityTimer" to="StateMachine/Walk" method="_on_ability_timer_timeout"]
+[connection signal="timeout" from="Stats/AbilityTimer" to="StateMachine/ClickAttack" method="_on_ability_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/ClickAttack" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Melee_Hitbox_Area" to="." method="_on_melee_hitbox_area_body_entered"]

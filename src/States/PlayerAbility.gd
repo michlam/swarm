@@ -3,6 +3,7 @@ class_name Ability
 
 @export var player: CharacterBody2D
 @export var player_stats: Node2D
+@export var ability_timer: Timer
 
 @export var fire_ability_scene: PackedScene
 @export var ice_ability_scene: PackedScene
@@ -30,7 +31,7 @@ func Exit():
 	pass
 	
 func Update(delta: float):
-	# Go back to idle
+	ability_timer.start()
 	Transitioned.emit(self, "idle")
 
 func Physics_Update(delta: float):

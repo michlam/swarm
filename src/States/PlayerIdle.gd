@@ -15,11 +15,13 @@ func Update(delta):
 		Transitioned.emit(self, "clickattack")
 	elif Input.is_action_pressed("right_click"):
 		pass
-	elif Input.is_action_just_pressed("ability"):
-		Transitioned.emit(self, "ability")
 	elif (Input.is_action_pressed("move_up") || Input.is_action_pressed("move_down") ||
 	Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right")):
 		Transitioned.emit(self, "walk")
 		
 func Physics_Update(delta):
 	pass
+
+func _on_ability_timer_timeout() -> void:
+	Transitioned.emit(self, "ability")
+	

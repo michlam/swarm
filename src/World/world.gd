@@ -8,11 +8,8 @@ var enemies
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health_bar.max_value = $Player.max_health
-	health_bar.value = $Player.current_health
 	health_bar.scale = Vector2(2, 2)
 	enemies = get_tree().get_nodes_in_group("enemies")
-	
 	$MobTimer.start()
 
 
@@ -42,7 +39,7 @@ func process_movement_helper(delta):
 			var collision = enemy.move_and_collide(enemy.velocity)
 	
 func process_animation_helper():
-	health_bar.value = $Player.current_health
+	health_bar.value = $Player/Stats.health
 
 
 func _on_mob_timer_timeout() -> void:

@@ -56,3 +56,7 @@ func find_attack_direction():
 			# Top section
 			sprite.play("Attack_Up_1")
 			ap.play("Attack_Up_1")
+
+
+func _on_ability_timer_timeout() -> void:
+	Transitioned.emit(self, "ability")
