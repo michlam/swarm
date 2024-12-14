@@ -13,6 +13,8 @@ func Enter():
 func Update(delta):
 	if Input.is_action_pressed("click_attack"):
 		Transitioned.emit(self, "clickattack")
+	if Input.is_action_pressed("right_click"):
+		pass
 	elif Input.is_anything_pressed():
 		Transitioned.emit(self, "walk")
 		

@@ -39,7 +39,6 @@ func get_element_colour(element: String) -> Color:
 
 
 func _on_icd_timeout() -> void:
-	print("ICD Timeout Over")
 	on_cooldown = false
 	
 
