@@ -3,7 +3,7 @@ extends Node
 # Possible element status is None, Fire, Water, and Ice.
 # Wind is not a status element, but only an applied element.
 const status_elements = ["Fire", "Water", "Ice"]
-@onready var status = "Fire" # For testing purposes
+@onready var status = "None" # For testing purposes
 @export var enemy_sprite: AnimatedSprite2D
 
 # Reaction scenes
@@ -53,7 +53,7 @@ func apply_element(applied_element: String) -> float:
 			
 		return 1.0
 
-	if applied_element == "None" || on_cooldown:
+	if applied_element == "None" || on_cooldown || applied_element == status:
 		return 1.0
 	else:
 		# A REACTION HAPPENED!

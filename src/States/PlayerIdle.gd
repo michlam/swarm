@@ -6,7 +6,6 @@ class_name Idle
 @export var sprite: AnimatedSprite2D
 
 func Enter():
-	print("back to idle")
 	sprite.play("Idle")
 	if player:
 		player.velocity = Vector2.ZERO

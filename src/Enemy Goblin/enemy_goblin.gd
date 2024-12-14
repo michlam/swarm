@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 var screen_size
 var is_attacking = false
-var max_health = 100
+var max_health = 500
 var current_health = max_health
 
 func _ready() -> void:
