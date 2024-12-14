@@ -2,10 +2,11 @@ extends Area2D
 
 var speed = 800
 var delay_over = false
-var damage = 20
+var base_damage = 20
 
 @export var sprite: AnimatedSprite2D
 @onready var player = get_parent().get_parent().get_parent()
+@onready var player_stats = player.find_child("Stats")
 
 var found_mouse_position = false
 var mouse_position
@@ -33,7 +34,7 @@ func _on_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage") && body.name != "Player":
-		body.take_damage(20, "Wind")
+		body.take_damage(player_stats.get_wind_damage(base_damage), "Wind")
 
 
 # Find direction of projectile towards mouse

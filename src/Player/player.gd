@@ -29,7 +29,7 @@ func process_zooming():
 
 func _on_melee_hitbox_area_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage") && body.name != "Player":
-		body.take_damage(40, "None")
+		body.take_damage($Stats.get_melee_damage(), "None")
 	
 func take_damage(damage):
 	$Stats.take_damage(damage)

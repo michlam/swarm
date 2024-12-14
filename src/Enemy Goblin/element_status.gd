@@ -8,8 +8,6 @@ const status_elements = ["Fire", "Water", "Ice"]
 
 # Reaction scenes
 @export var swirl_scene: PackedScene
-var swirl_damage = 20
-
 
 # There is a cooldown to elemental application. After a REACTION, there can be no application for
 # the duration of the ICD
@@ -66,7 +64,7 @@ func apply_element(applied_element: String) -> float:
 			"Wind": # Swirl reaction
 				var swirl = swirl_scene.instantiate()
 				add_child(swirl) 
-				swirl.set_values_and_animate(enemy_sprite.global_position, swirl_damage, status)
+				swirl.set_values_and_animate(enemy_sprite.global_position, status)
 		
 			"Fire":
 				if status == "Ice": # Melt reaction
