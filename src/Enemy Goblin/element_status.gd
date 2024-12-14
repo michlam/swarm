@@ -3,6 +3,7 @@ extends Node
 # Possible element status is None, Fire, Water, and Ice.
 # Wind is not a status element, but only an applied element.
 const status_elements = ["Fire", "Water", "Ice"]
+
 @onready var status = "None" # For testing purposes
 @export var enemy_sprite: AnimatedSprite2D
 
@@ -65,7 +66,7 @@ func apply_element(applied_element: String) -> float:
 		match applied_element:
 			"Wind": # Swirl reaction
 				var swirl = swirl_scene.instantiate()
-				add_child(swirl) 
+				call_deferred("add_child", swirl) 
 				swirl.set_values_and_animate(enemy_sprite.global_position, status)
 		
 			"Fire":

@@ -49,7 +49,7 @@ func handle_element_switch():
 		current_element = unlocked_elements[next_index]
 		element_switch_on_cooldown = true
 		$ElementSwitchTimer.start()
-		print(current_element)
+		print("Current Element: ", current_element)
 
 func _on_element_switch_timer_timeout() -> void:
 	element_switch_on_cooldown = false
@@ -80,18 +80,18 @@ func get_swirl_damage(damage): # Swirls cannot crit!
 	return return_damage
 	
 func get_ability_damage(damage, type):
-	var level = 0
+	var element_level = 0
 	var return_damage = 0
 	
 	match type:
 		"Fire":
-			level = fire_level
+			element_level = fire_level
 		"Water":
-			level = water_level
+			element_level = water_level
 		"Ice":
-			level = ice_level
+			element_level = ice_level
 	
-	return_damage = level * damage
+	return_damage = element_level * damage
 	return_damage = is_crit_strike(return_damage)
 	
 	return return_damage

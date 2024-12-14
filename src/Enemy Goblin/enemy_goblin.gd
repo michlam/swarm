@@ -17,7 +17,6 @@ func _ready() -> void:
 	position = 0.5 * screen_size + Vector2(100, 0)
 
 func _process(delta: float) -> void:
-	$AnimatedSprite2D.play("Walk")
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
@@ -35,8 +34,10 @@ func take_damage(damage: int, type: String):
 	damage_number.set_values_and_animate(damage, Vector2(0, -50), 60, colour)
 	current_health -= damage
 	
+	if current_health <= 0:
+		death_handler()
+	
 func death_handler():
 	hide()
 	$Hurtbox.set_deferred("disabled", true)
 	queue_free()
-	
