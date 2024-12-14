@@ -4,11 +4,14 @@ var speed = 600
 var damage = 20
 
 @export var sprite: AnimatedSprite2D
+@export var ap: AnimationPlayer
 @onready var player = get_parent().get_parent().get_parent()
 
 var found_mouse_position = false
 var mouse_position
 var direction = Vector2.ZERO
+
+var exploding = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,4 +38,15 @@ func find_direction() -> Vector2:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage") && body.name != "Player":
 		body.take_damage(damage, "Fire")
-		queue_free()
+		
+		if !exploding:
+			speed = 0
+			exploding = true
+			sprite.play("Explode")
+			ap.play("Explode")
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
+
+func remove():
+	queue_free()
