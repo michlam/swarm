@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dx75oy0dmu4g" path="res://Assets/Art/Characters/Torch_Purple.png" id="2_8i3fw"]
 [ext_resource type="PackedScene" uid="uid://bjo24vg80nft8" path="res://src/Damage Number/damage_number.tscn" id="2_65w0i"]
 [ext_resource type="Script" path="res://src/Enemy Goblin/element_status.gd" id="4_usv1j"]
-[ext_resource type="PackedScene" uid="uid://dw4cwfwjr6wfa" path="res://src/Swirl/swirl.tscn" id="5_37ai6"]
+[ext_resource type="PackedScene" uid="uid://dw4cwfwjr6wfa" path="res://src/Projectiles/swirl.tscn" id="5_37ai6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21mhh"]
 atlas = ExtResource("2_8i3fw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=54 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://src/States/PlayerIdle.gd" id="4_ai76x"]
 [ext_resource type="Script" path="res://src/States/PlayerWalk.gd" id="5_u7ooh"]
 [ext_resource type="Script" path="res://src/States/PlayerClickAttack.gd" id="6_c6x1p"]
-[ext_resource type="PackedScene" uid="uid://dpgi2bk0vpt1c" path="res://src/Player/wind_blade.tscn" id="7_kmbla"]
+[ext_resource type="PackedScene" uid="uid://dpgi2bk0vpt1c" path="res://src/wind_blade.tscn" id="7_kmbla"]
+[ext_resource type="Script" path="res://src/States/PlayerAbility.gd" id="9_37i3d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26lvp"]
 atlas = ExtResource("1_y8u2o")
@@ -622,6 +623,11 @@ player = NodePath("../..")
 ap = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite2D")
 wind_blade_scene = ExtResource("7_kmbla")
+
+[node name="Ability" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats")]
+script = ExtResource("9_37i3d")
+player = NodePath("../..")
+player_stats = NodePath("../../Stats")
 
 [connection signal="timeout" from="Stats/ElementSwitchTimer" to="Stats" method="_on_element_switch_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/ClickAttack" method="_on_animated_sprite_2d_animation_finished"]

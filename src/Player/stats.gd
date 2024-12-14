@@ -15,7 +15,7 @@ var crit_damage = 0
 var element_switch_on_cooldown = false
 var cooldown_reduction = 0
 
-var unlocked_elements = ["Fire", "Water", "Ice"] # Fire, Water, Ice
+var unlocked_elements = ["Fire"] # Fire, Water, Ice
 var current_element = "Fire"
 
 # Called when the node enters the scene tree for the first time.

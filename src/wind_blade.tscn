@@ -1,26 +1,26 @@
 [gd_scene load_steps=9 format=3 uid="uid://dpgi2bk0vpt1c"]
 
-[ext_resource type="Script" path="res://src/Player/wind_blade.gd" id="1_mxs7j"]
-[ext_resource type="Texture2D" uid="uid://dqw28uv35aef2" path="res://Assets/Art/Projectiles/Green Projectiles.png" id="2_w1gxj"]
+[ext_resource type="Script" path="res://src/Projectiles/wind_blade.gd" id="1_gwsq4"]
+[ext_resource type="Texture2D" uid="uid://dqw28uv35aef2" path="res://Assets/Art/Projectiles/Green Projectiles.png" id="2_jvekt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xi7ni"]
 radius = 11.0426
 height = 31.5161
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xls1"]
-atlas = ExtResource("2_w1gxj")
+atlas = ExtResource("2_jvekt")
 region = Rect2(544, 226, 32, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kutm5"]
-atlas = ExtResource("2_w1gxj")
+atlas = ExtResource("2_jvekt")
 region = Rect2(512, 226, 32, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y76si"]
-atlas = ExtResource("2_w1gxj")
+atlas = ExtResource("2_jvekt")
 region = Rect2(480, 226, 32, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3sdw"]
-atlas = ExtResource("2_w1gxj")
+atlas = ExtResource("2_jvekt")
 region = Rect2(448, 226, 32, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xgciw"]
@@ -45,7 +45,7 @@ animations = [{
 
 [node name="Wind_Blade" type="Area2D" node_paths=PackedStringArray("sprite")]
 scale = Vector2(2, 2)
-script = ExtResource("1_mxs7j")
+script = ExtResource("1_gwsq4")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
