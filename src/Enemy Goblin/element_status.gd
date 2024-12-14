@@ -6,6 +6,8 @@ const status_elements = ["Fire", "Water", "Ice"]
 @onready var status = "None" # For testing purposes
 @export var enemy_sprite: AnimatedSprite2D
 
+@onready var player_stats = get_parent().get_parent().find_child("Player").find_child("Stats")
+
 # Reaction scenes
 @export var swirl_scene: PackedScene
 
@@ -90,4 +92,4 @@ func apply_element(applied_element: String) -> float:
 		status = "None"
 		change_overlay_colour()
 		
-		return damage_multiplier
+		return damage_multiplier * ((100.0 + player_stats.elemental_mastery) / 100.0)

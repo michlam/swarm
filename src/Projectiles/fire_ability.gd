@@ -1,11 +1,12 @@
 extends Area2D
 
 var speed = 600
-var damage = 20
+var base_damage = 50
 
 @export var sprite: AnimatedSprite2D
 @export var ap: AnimationPlayer
 @onready var player = get_parent().get_parent().get_parent()
+@onready var player_stats = player.find_child("Stats")
 
 var found_mouse_position = false
 var mouse_position
@@ -37,7 +38,7 @@ func find_direction() -> Vector2:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage") && body.name != "Player":
-		body.take_damage(damage, "Fire")
+		body.take_damage(player_stats.get_ability_damage(base_damage, "Fire"), "Fire")
 		
 		if !exploding:
 			speed = 0

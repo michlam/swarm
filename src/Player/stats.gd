@@ -78,6 +78,23 @@ func get_swirl_damage(damage): # Swirls cannot crit!
 	return_damage = floor(return_damage * ((100.0 + elemental_mastery) / 100.0))
 	
 	return return_damage
+	
+func get_ability_damage(damage, type):
+	var level = 0
+	var return_damage = 0
+	
+	match type:
+		"Fire":
+			level = fire_level
+		"Water":
+			level = water_level
+		"Ice":
+			level = ice_level
+	
+	return_damage = level * damage
+	return_damage = is_crit_strike(return_damage)
+	
+	return return_damage
 
 func is_crit_strike(damage):
 	if randf_range(0, 100) < crit_rate:
