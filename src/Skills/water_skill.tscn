@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://6x6p5tq0wtx8"]
+
+[ext_resource type="Script" path="res://src/Skills/water_skill.gd" id="1_08val"]
+[ext_resource type="Texture2D" uid="uid://sxha76j50a8p" path="res://Assets/Art/Projectiles/Dark Blue Projectiles.png" id="1_83tib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqofg"]
+atlas = ExtResource("1_83tib")
+region = Rect2(96, 129, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwb7x"]
+atlas = ExtResource("1_83tib")
+region = Rect2(112, 129, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2fay"]
+atlas = ExtResource("1_83tib")
+region = Rect2(128, 129, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6mff"]
+atlas = ExtResource("1_83tib")
+region = Rect2(144, 129, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3irv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqofg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwb7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2fay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6mff")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_akhe4"]
+radius = 40.009
+height = 289.816
+
+[node name="Water_Skill" type="Area2D" node_paths=PackedStringArray("sprite")]
+rotation = -1.58253
+script = ExtResource("1_08val")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 20)
+sprite_frames = SubResource("SpriteFrames_b3irv")
+animation = &"Default"
+frame_progress = 0.080144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.941245, 5.01139)
+shape = SubResource("CapsuleShape2D_akhe4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

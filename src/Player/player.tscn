@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=60 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cf02j3fmly2rl" path="res://src/Projectiles/water_ability.tscn" id="12_sxiw7"]
 [ext_resource type="Script" path="res://src/Player/skill.gd" id="13_gfirs"]
 [ext_resource type="PackedScene" uid="uid://du0ko46rdkjf7" path="res://src/Skills/fire_skill.tscn" id="14_fkk5v"]
+[ext_resource type="PackedScene" uid="uid://6x6p5tq0wtx8" path="res://src/Skills/water_skill.tscn" id="15_jaju5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26lvp"]
 atlas = ExtResource("1_y8u2o")
@@ -584,7 +585,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="SkillTimer" type="Timer" parent="Stats"]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -655,6 +656,7 @@ script = ExtResource("13_gfirs")
 player = NodePath("../..")
 player_stats = NodePath("../../Stats")
 fire_skill_scene = ExtResource("14_fkk5v")
+water_skill_scene = ExtResource("15_jaju5")
 
 [connection signal="timeout" from="Stats/ElementSwitchTimer" to="Stats" method="_on_element_switch_timer_timeout"]
 [connection signal="timeout" from="Stats/PassiveTimer" to="StateMachine/Idle" method="_on_ability_timer_timeout"]

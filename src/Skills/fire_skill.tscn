@@ -45,7 +45,7 @@ sprite = NodePath("AnimatedSprite2D")
 position = Vector2(-6, 0)
 sprite_frames = SubResource("SpriteFrames_huq70")
 animation = &"Default"
-frame_progress = 0.242918
+frame_progress = 0.098899
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ldq1t")
