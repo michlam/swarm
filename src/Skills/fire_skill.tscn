@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://du0ko46rdkjf7"]
+
+[ext_resource type="Script" path="res://src/Skills/fire_skill.gd" id="1_687ku"]
+[ext_resource type="Texture2D" uid="uid://784737eel5in" path="res://Assets/Art/Projectiles/Orange Projectiles.png" id="1_x7q8b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1na3d"]
+atlas = ExtResource("1_x7q8b")
+region = Rect2(214, 350, 47, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf5jc"]
+atlas = ExtResource("1_x7q8b")
+region = Rect2(261, 350, 47, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl1r6"]
+atlas = ExtResource("1_x7q8b")
+region = Rect2(308, 350, 47, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_huq70"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1na3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf5jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl1r6")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 32.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ldq1t"]
+radius = 15.0333
+
+[node name="Fire_Skill" type="Area2D" node_paths=PackedStringArray("sprite")]
+rotation = -1.58157
+scale = Vector2(2, 2)
+script = ExtResource("1_687ku")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, 0)
+sprite_frames = SubResource("SpriteFrames_huq70")
+animation = &"Default"
+frame_progress = 0.242918
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ldq1t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

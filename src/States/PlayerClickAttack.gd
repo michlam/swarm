@@ -59,4 +59,4 @@ func find_attack_direction():
 
 
 func _on_ability_timer_timeout() -> void:
-	Transitioned.emit(self, "ability")
+	Transitioned.emit(self, "passive")

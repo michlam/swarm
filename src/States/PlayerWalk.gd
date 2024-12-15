@@ -5,6 +5,9 @@ class_name Walk
 @export var stats: Node2D
 @export var ap: AnimationPlayer
 @export var sprite: AnimatedSprite2D
+@export var skill_timer: Timer
+
+var skill_on_cooldown = false
 
 func Enter():
 	sprite.play("Walk")
@@ -12,6 +15,10 @@ func Enter():
 func Update(delta):
 	if !Input.is_anything_pressed():
 		Transitioned.emit(self, "idle")
+	elif (Input.is_action_just_pressed("skill") && !stats.skill_on_cooldown):
+		stats.skill_on_cooldown = true
+		skill_timer.start()
+		Transitioned.emit(self, "skill")
 	elif Input.is_action_pressed("click_attack"):
 		Transitioned.emit(self, "clickattack")
 	
@@ -32,4 +39,4 @@ func Physics_Update(delta):
 
 
 func _on_ability_timer_timeout() -> void:
-	Transitioned.emit(self, "ability")
+	Transitioned.emit(self, "passive")

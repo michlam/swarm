@@ -1,5 +1,5 @@
 extends State
-class_name Ability
+class_name Passive
 
 @export var player: CharacterBody2D
 @export var player_stats: Node2D

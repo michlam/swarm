@@ -25,6 +25,8 @@ var cooldown_reduction = 0
 var unlocked_elements = ["Fire", "Water", "Ice"] # Fire, Water, Ice
 var current_element = "Fire"
 
+var skill_on_cooldown = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -101,3 +103,6 @@ func is_crit_strike(damage):
 		return floor(damage * ((100.0 + crit_damage) / 100.0))
 	else:
 		return damage
+
+func _on_skill_timer_timeout() -> void:
+	skill_on_cooldown = false
