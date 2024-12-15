@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://cpiyiuhygd1a7"]
+[gd_scene load_steps=25 format=3 uid="uid://cpiyiuhygd1a7"]
 
 [ext_resource type="Script" path="res://src/Enemy Goblin/enemy_goblin.gd" id="1_gh0bu"]
 [ext_resource type="Texture2D" uid="uid://dx75oy0dmu4g" path="res://Assets/Art/Characters/Torch_Purple.png" id="2_8i3fw"]
 [ext_resource type="PackedScene" uid="uid://bjo24vg80nft8" path="res://src/Damage Number/damage_number.tscn" id="2_65w0i"]
+[ext_resource type="Texture2D" uid="uid://d18kstg2j628b" path="res://Assets/Art/Icons/Emojis_Free_Compilation.png" id="4_rd8ji"]
 [ext_resource type="Script" path="res://src/Enemy Goblin/element_status.gd" id="4_usv1j"]
 [ext_resource type="PackedScene" uid="uid://dw4cwfwjr6wfa" path="res://src/Projectiles/swirl.tscn" id="5_37ai6"]
 [ext_resource type="Script" path="res://src/Enemy Goblin/state_machine.gd" id="5_ngw75"]
@@ -128,12 +129,21 @@ sprite_frames = SubResource("SpriteFrames_c0o1m")
 animation = &"Idle"
 frame_progress = 0.742857
 
+[node name="Stun_Sprite" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+position = Vector2(1.53846, -57.0182)
+scale = Vector2(-1.91213, 1.75836)
+texture = ExtResource("4_rd8ji")
+region_enabled = true
+region_rect = Rect2(60, 60, 20, 20)
+
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yvepu")
 
-[node name="ElementStatus" type="Node2D" parent="." node_paths=PackedStringArray("enemy_sprite")]
+[node name="ElementStatus" type="Node2D" parent="." node_paths=PackedStringArray("enemy_sprite", "stun_sprite")]
 script = ExtResource("4_usv1j")
 enemy_sprite = NodePath("../AnimatedSprite2D")
+stun_sprite = NodePath("../AnimatedSprite2D/Stun_Sprite")
 swirl_scene = ExtResource("5_37ai6")
 
 [node name="ICD" type="Timer" parent="ElementStatus"]

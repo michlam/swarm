@@ -7,6 +7,7 @@ var stunned = false
 
 @onready var status = "None" # For testing purposes
 @export var enemy_sprite: AnimatedSprite2D
+@export var stun_sprite: Sprite2D
 
 @onready var player_stats = get_parent().get_parent().find_child("Player").find_child("Stats")
 
@@ -81,6 +82,7 @@ func apply_element(applied_element: String) -> float:
 					damage_multiplier = 1.5
 				if status == "Water": # Freeze reaction
 					stunned = true
+					stun_sprite.visible = true
 					$Stun_Timer.start()
 					pass
 			
@@ -89,6 +91,7 @@ func apply_element(applied_element: String) -> float:
 					damage_multiplier = 2.0
 				if status == "Ice": # Freeze Reaction
 					stunned = true
+					stun_sprite.visible = true
 					$Stun_Timer.start()
 					pass
 		
@@ -101,3 +104,4 @@ func apply_element(applied_element: String) -> float:
 
 func _on_stun_timeout() -> void:
 	stunned = false
+	stun_sprite.visible = false
