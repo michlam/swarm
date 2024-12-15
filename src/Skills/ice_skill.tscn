@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=3 uid="uid://dyf6fconjrv4p"]
+
+[ext_resource type="Script" path="res://src/Skills/ice_skill.gd" id="1_f438g"]
+[ext_resource type="Texture2D" uid="uid://c1gwpk4pmjpii" path="res://Assets/Art/Projectiles/Blue Projectiles.png" id="1_gjxdn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prlum"]
+atlas = ExtResource("1_gjxdn")
+region = Rect2(608, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icvcv"]
+atlas = ExtResource("1_gjxdn")
+region = Rect2(608, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehqye"]
+atlas = ExtResource("1_gjxdn")
+region = Rect2(592, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbjd6"]
+atlas = ExtResource("1_gjxdn")
+region = Rect2(576, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpfay"]
+atlas = ExtResource("1_gjxdn")
+region = Rect2(256, 288, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80y17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prlum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icvcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehqye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbjd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpfay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prlum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icvcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehqye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbjd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpfay")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3fnno"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_gp6cr"]
+resource_name = "Default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(12, 12)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.733333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"remove"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kthh3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gvm14"]
+_data = {
+"Default": SubResource("Animation_gp6cr"),
+"RESET": SubResource("Animation_kthh3")
+}
+
+[node name="Ice_Skill" type="Area2D" node_paths=PackedStringArray("sprite", "ap")]
+script = ExtResource("1_f438g")
+sprite = NodePath("AnimatedSprite2D")
+ap = NodePath("AnimationPlayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_80y17")
+animation = &"Default"
+frame_progress = 0.0598694
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3fnno")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gvm14")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

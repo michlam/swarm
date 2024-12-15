@@ -61,8 +61,6 @@ func apply_element(applied_element: String) -> float:
 		return 1.0
 	else:
 		# A REACTION HAPPENED!
-		$ICD.start()
-		on_cooldown = true
 		var damage_multiplier = 1.0
 		
 		match applied_element:
@@ -83,7 +81,7 @@ func apply_element(applied_element: String) -> float:
 				if status == "Water": # Freeze reaction
 					stunned = true
 					stun_sprite.visible = true
-					$Stun_Timer.start()
+					$Stun_Timer.start(3.0)
 					pass
 			
 			"Water":
@@ -92,16 +90,22 @@ func apply_element(applied_element: String) -> float:
 				if status == "Ice": # Freeze Reaction
 					stunned = true
 					stun_sprite.visible = true
-					$Stun_Timer.start()
+					$Stun_Timer.start(3.0)
 					pass
 		
-		# Status should be set to none
-		status = "None"
-		change_overlay_colour()
-		
+		remove_status()
 		return damage_multiplier * ((100.0 + player_stats.elemental_mastery) / 100.0)
 
-
-func _on_stun_timeout() -> void:
+func remove_status():
+	$ICD.start()
+	on_cooldown = true
+	status = "None"
+	change_overlay_colour()
+	
+func remove_stunned():
+	$Stun_Timer.start(0.1)
 	stunned = false
 	stun_sprite.visible = false
+
+func _on_stun_timeout() -> void:
+	remove_stunned()
