@@ -3,6 +3,7 @@ extends Node
 # Possible element status is None, Fire, Water, and Ice.
 # Wind is not a status element, but only an applied element.
 const status_elements = ["Fire", "Water", "Ice"]
+var stunned = false
 
 @onready var status = "None" # For testing purposes
 @export var enemy_sprite: AnimatedSprite2D
@@ -79,14 +80,16 @@ func apply_element(applied_element: String) -> float:
 				if status == "Fire": # Reverse melt reaction
 					damage_multiplier = 1.5
 				if status == "Water": # Freeze reaction
-					# APPLY STUN STATE TO ENEMY
+					stunned = true
+					$Stun_Timer.start()
 					pass
 			
 			"Water":
 				if status == "Fire": # Vaporize reaction
 					damage_multiplier = 2.0
 				if status == "Ice": # Freeze Reaction
-					# APPLY STUN STATE TO ENEMY
+					stunned = true
+					$Stun_Timer.start()
 					pass
 		
 		# Status should be set to none
@@ -94,3 +97,7 @@ func apply_element(applied_element: String) -> float:
 		change_overlay_colour()
 		
 		return damage_multiplier * ((100.0 + player_stats.elemental_mastery) / 100.0)
+
+
+func _on_stun_timeout() -> void:
+	stunned = false

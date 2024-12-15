@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cpiyiuhygd1a7"]
+[gd_scene load_steps=24 format=3 uid="uid://cpiyiuhygd1a7"]
 
 [ext_resource type="Script" path="res://src/Enemy Goblin/enemy_goblin.gd" id="1_gh0bu"]
 [ext_resource type="Texture2D" uid="uid://dx75oy0dmu4g" path="res://Assets/Art/Characters/Torch_Purple.png" id="2_8i3fw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dw4cwfwjr6wfa" path="res://src/Projectiles/swirl.tscn" id="5_37ai6"]
 [ext_resource type="Script" path="res://src/Enemy Goblin/state_machine.gd" id="5_ngw75"]
 [ext_resource type="Script" path="res://src/Enemy Goblin/Enemy_Goblin_Walk.gd" id="6_6k5s4"]
+[ext_resource type="Script" path="res://src/Enemy Goblin/stunned.gd" id="8_4p8tk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21mhh"]
 atlas = ExtResource("2_8i3fw")
@@ -139,13 +140,26 @@ swirl_scene = ExtResource("5_37ai6")
 wait_time = 2.0
 one_shot = true
 
+[node name="Stun_Timer" type="Timer" parent="ElementStatus"]
+wait_time = 3.0
+one_shot = true
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_ngw75")
 initial_state = NodePath("Walk")
 
-[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("goblin", "sprite")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("goblin", "sprite", "element_status")]
 script = ExtResource("6_6k5s4")
 goblin = NodePath("../..")
 sprite = NodePath("../../AnimatedSprite2D")
+element_status = NodePath("../../ElementStatus")
+
+[node name="Stunned" type="Node" parent="StateMachine" node_paths=PackedStringArray("goblin", "sprite", "element_status")]
+script = ExtResource("8_4p8tk")
+goblin = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+element_status = NodePath("../../ElementStatus")
 
 [connection signal="timeout" from="ElementStatus/ICD" to="ElementStatus" method="_on_icd_timeout"]
+[connection signal="timeout" from="ElementStatus/Stun_Timer" to="ElementStatus" method="_on_stun_timeout"]
+[connection signal="timeout" from="ElementStatus/Stun_Timer" to="StateMachine/Stunned" method="_on_stun_timer_timeout"]

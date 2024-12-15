@@ -6086,6 +6086,7 @@ texture_progress = ExtResource("7_bineq")
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.6
+one_shot = true
 autostart = true
 
 [node name="GUI_Time" parent="." instance=ExtResource("12_clwh7")]

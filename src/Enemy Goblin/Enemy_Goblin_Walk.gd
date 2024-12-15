@@ -3,6 +3,7 @@ class_name EnemyGoblinWalk
 
 @export var goblin: CharacterBody2D
 @export var sprite: AnimatedSprite2D
+@export var element_status: Node2D
 @onready var player = get_parent().get_parent().get_parent().find_child("Player")
 
 func Enter():
@@ -15,6 +16,10 @@ func Update(delta):
 	var to_player_direction = player.position - goblin.position
 	goblin.velocity = to_player_direction.normalized() * 30 * delta 
 	goblin.move_and_collide(goblin.velocity)
+	
+	# Check for stunned
+	if element_status.stunned:
+		Transitioned.emit(self, "stunned")
 		
 func Physics_Update(delta):
 	pass
