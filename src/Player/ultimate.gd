@@ -4,6 +4,7 @@ class_name Ultimate
 @export var player: CharacterBody2D
 @export var player_stats: Node2D
 
+@export var fire_ultimate_scene: PackedScene
 @export var water_ultimate_scene: PackedScene
 
 var ultimate_complete = true
@@ -15,7 +16,9 @@ func Enter():
 		pass
 	
 	if player_stats.current_element == "Fire":
-		pass
+		ultimate_complete = false
+		ultimate_scene = fire_ultimate_scene.instantiate()
+		add_child(ultimate_scene)
 		
 	if player_stats.current_element == "Ice":
 		for node in get_tree().get_nodes_in_group("enemies"):

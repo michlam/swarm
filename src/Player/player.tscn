@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=64 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dyf6fconjrv4p" path="res://src/Skills/ice_skill.tscn" id="15_xgagn"]
 [ext_resource type="Script" path="res://src/Player/ultimate.gd" id="17_y6f6t"]
 [ext_resource type="PackedScene" uid="uid://cvkq7ec2wmuy0" path="res://src/Ultimate/water_ultimate.tscn" id="18_0pgb3"]
+[ext_resource type="PackedScene" uid="uid://dvsjapd38iulk" path="res://src/Ultimate/fire_ultimate.tscn" id="18_a2fbr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26lvp"]
 atlas = ExtResource("1_y8u2o")
@@ -574,6 +575,7 @@ radius = 15.9967
 height = 63.9999
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 2
 scale = Vector2(0.65, 0.65)
 script = ExtResource("1_0mebj")
 
@@ -670,6 +672,7 @@ water_skill_scene = ExtResource("15_jaju5")
 script = ExtResource("17_y6f6t")
 player = NodePath("../..")
 player_stats = NodePath("../../Stats")
+fire_ultimate_scene = ExtResource("18_a2fbr")
 water_ultimate_scene = ExtResource("18_0pgb3")
 
 [connection signal="timeout" from="Stats/ElementSwitchTimer" to="Stats" method="_on_element_switch_timer_timeout"]
