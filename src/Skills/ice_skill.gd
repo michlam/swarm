@@ -1,6 +1,6 @@
 extends Area2D
 
-var base_damage = 50
+var base_damage = 300
 
 @export var sprite: AnimatedSprite2D
 @export var ap: AnimationPlayer

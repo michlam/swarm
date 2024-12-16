@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed = 600
-var base_damage = 50
+var base_damage = 100
 
 @export var sprite: AnimatedSprite2D
 @export var ap: AnimationPlayer

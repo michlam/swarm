@@ -3,7 +3,7 @@ extends Area2D
 var max_speed = 800
 var speed = max_speed
 var acceleration = 800
-var base_damage = 5
+var base_damage = 20
 
 @export var sprite: AnimatedSprite2D
 @onready var player = get_parent().get_parent().get_parent()

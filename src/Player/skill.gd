@@ -23,11 +23,9 @@ func Enter():
 	if player_stats.current_element == "Ice":
 		for node in get_tree().get_nodes_in_group("enemies"):
 			var status = node.find_child("ElementStatus")
-			if status.stunned || status.status == "Ice":
-				var base_damage = 50
-				if status.stunned:
-					base_damage *= 3
-				
+			if status.stunned:
+				var base_damage = 300
+
 				node.take_damage(player_stats.get_ability_damage(base_damage, "Ice"), "Ice")
 				status.remove_status()
 				status.remove_stunned()

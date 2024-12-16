@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed = 1200
-var base_damage = 10
+var base_damage = 30
 
 @export var sprite: AnimatedSprite2D
 @onready var player = get_parent().get_parent().get_parent()

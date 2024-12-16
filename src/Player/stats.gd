@@ -20,7 +20,7 @@ var crit_rate = 10
 var crit_damage: float = 50.0
 
 var element_switch_on_cooldown = false
-var cooldown_reduction = 0
+var cooldown_reduction = 95
 
 var unlocked_elements = ["Fire", "Water", "Ice"] # Fire, Water, Ice
 var current_element = "Fire"
@@ -29,6 +29,8 @@ var skill_on_cooldown = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Set the cooldown reduction
+	$PassiveTimer.wait_time = 3 * ((100.0 - cooldown_reduction) / 100.0)
 	pass # Replace with function body.
 
 
