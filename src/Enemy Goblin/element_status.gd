@@ -79,19 +79,14 @@ func apply_element(applied_element: String) -> float:
 				if status == "Fire": # Reverse melt reaction
 					damage_multiplier = 1.5
 				if status == "Water": # Freeze reaction
-					stunned = true
-					stun_sprite.visible = true
-					$Stun_Timer.start(3.0)
-					pass
+					stun()
 			
 			"Water":
 				if status == "Fire": # Vaporize reaction
 					damage_multiplier = 2.0
 				if status == "Ice": # Freeze Reaction
-					stunned = true
-					stun_sprite.visible = true
-					$Stun_Timer.start(3.0)
-					pass
+					stun()
+					
 		
 		remove_status()
 		return damage_multiplier * ((100.0 + player_stats.elemental_mastery) / 100.0)
@@ -106,6 +101,12 @@ func remove_stunned():
 	$Stun_Timer.start(0.1)
 	stunned = false
 	stun_sprite.visible = false
+	
+func stun():
+	stunned = true
+	stun_sprite.visible = true
+	$Stun_Timer.start(3.0)
+	
 
 func _on_stun_timeout() -> void:
 	remove_stunned()

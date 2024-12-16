@@ -2,12 +2,12 @@ extends State
 class_name Walk
 
 @export var player: CharacterBody2D
-@export var stats: Node2D
+@export var player_stats: Node2D
 @export var ap: AnimationPlayer
 @export var sprite: AnimatedSprite2D
 @export var skill_timer: Timer
+@export var ultimate_timer: Timer
 
-var skill_on_cooldown = false
 
 func Enter():
 	sprite.play("Walk")
@@ -15,10 +15,14 @@ func Enter():
 func Update(delta):
 	if !Input.is_anything_pressed():
 		Transitioned.emit(self, "idle")
-	elif (Input.is_action_just_pressed("skill") && !stats.skill_on_cooldown):
-		stats.skill_on_cooldown = true
+	elif (Input.is_action_just_pressed("skill") && !player_stats.skill_on_cooldown):
+		player_stats.skill_on_cooldown = true
 		skill_timer.start()
 		Transitioned.emit(self, "skill")
+	elif (Input.is_action_just_pressed("ultimate") && !player_stats.ultimate_on_cooldown):
+		player_stats.ultimate_on_cooldown = true
+		ultimate_timer.start()
+		Transitioned.emit(self, "ultimate")
 	elif Input.is_action_pressed("click_attack"):
 		Transitioned.emit(self, "clickattack")
 	
@@ -34,7 +38,7 @@ func Physics_Update(delta):
 	if Input.is_action_pressed("move_up"):
 		player.velocity.y -= 1
 		
-	player.velocity = player.velocity.normalized() * stats.speed
+	player.velocity = player.velocity.normalized() * player_stats.speed
 	player.position += player.velocity * delta
 
 
