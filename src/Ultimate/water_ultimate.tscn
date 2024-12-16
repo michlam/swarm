@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvkq7ec2wmuy0"]
+
+[ext_resource type="Script" path="res://src/Ultimate/water_ultimate.gd" id="1_5mbde"]
+[ext_resource type="Texture2D" uid="uid://sxha76j50a8p" path="res://Assets/Art/Projectiles/Dark Blue Projectiles.png" id="1_f03tb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_146rc"]
+atlas = ExtResource("1_f03tb")
+region = Rect2(454, 196, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exs6q"]
+atlas = ExtResource("1_f03tb")
+region = Rect2(485, 196, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i5g7"]
+atlas = ExtResource("1_f03tb")
+region = Rect2(514, 196, 29, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8ltx"]
+atlas = ExtResource("1_f03tb")
+region = Rect2(576, 196, 32, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ue1ut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_146rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exs6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i5g7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8ltx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i5g7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exs6q")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 16.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kp7cx"]
+radius = 8.79999
+
+[node name="Water_Ultimate" type="Area2D" node_paths=PackedStringArray("sprite")]
+rotation = -1.56327
+scale = Vector2(4, 5)
+script = ExtResource("1_5mbde")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ue1ut")
+animation = &"Default"
+frame_progress = 0.384265
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.56923
+shape = SubResource("CapsuleShape2D_kp7cx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

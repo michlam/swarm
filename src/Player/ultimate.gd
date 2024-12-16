@@ -4,7 +4,10 @@ class_name Ultimate
 @export var player: CharacterBody2D
 @export var player_stats: Node2D
 
+@export var water_ultimate_scene: PackedScene
+
 var ultimate_complete = true
+var ultimate_scene
 
 func Enter():
 	# Need an element to use ultimate
@@ -21,7 +24,9 @@ func Enter():
 			status.stun()
 		
 	if player_stats.current_element == "Water":
-		pass
+		ultimate_complete = false
+		ultimate_scene = water_ultimate_scene.instantiate()
+		add_child(ultimate_scene) 
 	
 func Exit():
 	pass

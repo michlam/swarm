@@ -3,7 +3,8 @@ extends Node2D
 # MEMBER VARIABLES
 var level = 1
 var experience = 0
-var speed = 250
+var base_speed = 250
+var speed = base_speed
 
 var max_health = 100
 var health = max_health
@@ -41,7 +42,8 @@ func _process(delta: float) -> void:
 	handle_element_switch()
 
 func take_damage(amount):
-	health = max(0, health - amount)
+	if !is_invincible:
+		health = max(0, health - amount)
 	
 func heal(amount):
 	health = min(health + amount, max_health)
