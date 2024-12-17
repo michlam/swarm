@@ -590,11 +590,11 @@ wait_time = 3.0
 autostart = true
 
 [node name="SkillTimer" type="Timer" parent="Stats"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="UltimateTimer" type="Timer" parent="Stats"]
-wait_time = 3.0
+wait_time = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -0.00313293
