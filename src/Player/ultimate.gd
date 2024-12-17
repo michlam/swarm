@@ -3,7 +3,7 @@ class_name Ultimate
 
 @export var player: CharacterBody2D
 @export var player_stats: Node2D
-
+@export var ultimate_timer: Timer
 @export var fire_ultimate_scene: PackedScene
 @export var water_ultimate_scene: PackedScene
 
@@ -36,6 +36,7 @@ func Exit():
 	
 func Update(delta: float):
 	if ultimate_complete:
+		ultimate_timer.start()
 		Transitioned.emit(self, "idle")
 
 func Physics_Update(delta: float):

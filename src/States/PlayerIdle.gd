@@ -5,8 +5,6 @@ class_name Idle
 @export var player_stats: Node2D
 @export var ap: AnimationPlayer
 @export var sprite: AnimatedSprite2D
-@export var skill_timer: Timer
-@export var ultimate_timer: Timer
 
 
 func Enter():
@@ -21,11 +19,9 @@ func Update(delta):
 		pass
 	elif (Input.is_action_just_pressed("skill") && !player_stats.skill_on_cooldown):
 		player_stats.skill_on_cooldown = true
-		skill_timer.start()
 		Transitioned.emit(self, "skill")
 	elif (Input.is_action_just_pressed("ultimate") && !player_stats.ultimate_on_cooldown):
 		player_stats.ultimate_on_cooldown = true
-		ultimate_timer.start()
 		Transitioned.emit(self, "ultimate")
 	elif (Input.is_action_pressed("move_up") || Input.is_action_pressed("move_down") ||
 		Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right")):

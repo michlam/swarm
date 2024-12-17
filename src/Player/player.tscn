@@ -590,6 +590,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="SkillTimer" type="Timer" parent="Stats"]
+wait_time = 5.0
 one_shot = true
 
 [node name="UltimateTimer" type="Timer" parent="Stats"]
@@ -626,23 +627,19 @@ debug_color = Color(0.956863, 0.2, 0.0941176, 0.678431)
 script = ExtResource("3_vu6g4")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats", "ap", "sprite", "skill_timer", "ultimate_timer")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats", "ap", "sprite")]
 script = ExtResource("4_ai76x")
 player = NodePath("../..")
 player_stats = NodePath("../../Stats")
 ap = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite2D")
-skill_timer = NodePath("../../Stats/SkillTimer")
-ultimate_timer = NodePath("../../Stats/UltimateTimer")
 
-[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats", "ap", "sprite", "skill_timer", "ultimate_timer")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats", "ap", "sprite")]
 script = ExtResource("5_u7ooh")
 player = NodePath("../..")
 player_stats = NodePath("../../Stats")
 ap = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite2D")
-skill_timer = NodePath("../../Stats/SkillTimer")
-ultimate_timer = NodePath("../../Stats/UltimateTimer")
 
 [node name="ClickAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "ap", "sprite")]
 script = ExtResource("6_c6x1p")
@@ -660,18 +657,20 @@ fire_ability_scene = ExtResource("10_7jcam")
 ice_ability_scene = ExtResource("11_yy8k6")
 water_ability_scene = ExtResource("12_sxiw7")
 
-[node name="Skill" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats")]
+[node name="Skill" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats", "skill_timer")]
 script = ExtResource("13_gfirs")
 player = NodePath("../..")
 player_stats = NodePath("../../Stats")
+skill_timer = NodePath("../../Stats/SkillTimer")
 fire_skill_scene = ExtResource("14_fkk5v")
 ice_skill_scene = ExtResource("15_xgagn")
 water_skill_scene = ExtResource("15_jaju5")
 
-[node name="Ultimate" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats")]
+[node name="Ultimate" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats", "ultimate_timer")]
 script = ExtResource("17_y6f6t")
 player = NodePath("../..")
 player_stats = NodePath("../../Stats")
+ultimate_timer = NodePath("../../Stats/UltimateTimer")
 fire_ultimate_scene = ExtResource("18_a2fbr")
 water_ultimate_scene = ExtResource("18_0pgb3")
 

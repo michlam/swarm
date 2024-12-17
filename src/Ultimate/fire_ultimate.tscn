@@ -106,7 +106,7 @@ z_index = 3
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_mbbrp")
 animation = &"Default"
-frame_progress = 0.0240733
+frame_progress = 0.63832
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

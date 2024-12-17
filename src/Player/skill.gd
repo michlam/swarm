@@ -3,6 +3,7 @@ class_name Skill
 
 @export var player: CharacterBody2D
 @export var player_stats: Node2D
+@export var skill_timer: Timer
 
 @export var fire_skill_scene: PackedScene
 @export var ice_skill_scene: PackedScene
@@ -42,6 +43,7 @@ func Exit():
 	
 func Update(delta: float):
 	if skill_complete:
+		skill_timer.start()
 		Transitioned.emit(self, "idle")
 
 func Physics_Update(delta: float):
