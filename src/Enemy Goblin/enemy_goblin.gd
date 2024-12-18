@@ -37,7 +37,6 @@ func take_damage(damage: int, type: String):
 	current_health -= damage
 	
 	if current_health <= 0:
-		print("Goblin death")
 		experience.create_xp_orb(max_health, position)
 		death_handler()
 	
