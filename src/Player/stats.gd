@@ -32,6 +32,8 @@ var skill_on_cooldown = false
 var ultimate_on_cooldown = false
 var is_invincible = false
 
+@onready var gui_level_up = get_parent().get_parent().find_child("GUI_Level_Up")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Set the cooldown reduction
@@ -122,6 +124,10 @@ func gain_exp(amount: int):
 	current_experience += amount
 	
 	if current_experience > experience_to_next_level:
-		# level_up()
-		print("Level up to: ", level)
+		level_up()
 		current_experience -= experience_to_next_level
+		
+func level_up():
+	print("level up")
+	get_tree().paused = true
+	gui_level_up.find_child("CanvasLayer").visible = true

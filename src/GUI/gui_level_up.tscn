@@ -44,20 +44,21 @@ font_size = 8
 
 [node name="GUI_Level_Up" type="Control"]
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(600, 400)
 scale = Vector2(24, 24)
 texture = ExtResource("1_t5xt1")
 region_enabled = true
 region_rect = Rect2(0, 96, 48, 32)
 
-[node name="LevelUpLabel" type="Label" parent="."]
+[node name="LevelUpLabel" type="Label" parent="CanvasLayer"]
 offset_left = 92.0
 offset_top = 38.0
 offset_right = 416.0
@@ -65,8 +66,7 @@ offset_bottom = 128.0
 text = "Level Up"
 label_settings = SubResource("LabelSettings_ibf8o")
 
-[node name="FireButton" type="TextureButton" parent="."]
-layout_mode = 0
+[node name="FireButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 187.0
 offset_top = 176.0
 offset_right = 235.0
@@ -75,7 +75,7 @@ scale = Vector2(10, 7)
 texture_normal = ExtResource("3_osqb2")
 metadata/_edit_group_ = true
 
-[node name="Level" type="Label" parent="FireButton"]
+[node name="Level" type="Label" parent="CanvasLayer/FireButton"]
 offset_left = 27.4
 offset_top = 1.57143
 offset_right = 44.4
@@ -84,7 +84,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_cl4g3")
 horizontal_alignment = 2
 
-[node name="Type" type="Label" parent="FireButton"]
+[node name="Type" type="Label" parent="CanvasLayer/FireButton"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 1.85714
@@ -93,34 +93,34 @@ offset_bottom = 11.8571
 text = "FirE"
 label_settings = SubResource("LabelSettings_cl4g3")
 
-[node name="WaterButton" type="TextureButton" parent="."]
+[node name="WaterButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 185.0
 offset_top = 288.0
 offset_right = 233.0
 offset_bottom = 304.0
 scale = Vector2(10, 7)
 texture_normal = ExtResource("3_osqb2")
-metadata/_edit_group_ = true
 
-[node name="Level" type="Label" parent="WaterButton"]
-offset_left = 4.0
+[node name="Level" type="Label" parent="CanvasLayer/WaterButton"]
+offset_left = 18.5
 offset_top = 1.85714
-offset_right = 29.0
+offset_right = 43.5
 offset_bottom = 11.8571
-text = "Water"
-label_settings = SubResource("LabelSettings_cp6qf")
-
-[node name="Type" type="Label" parent="WaterButton"]
-layout_mode = 0
-offset_left = 19.1
-offset_top = 1.71428
-offset_right = 44.1
-offset_bottom = 11.7143
 text = "0"
 label_settings = SubResource("LabelSettings_cp6qf")
 horizontal_alignment = 2
 
-[node name="IceButton" type="TextureButton" parent="."]
+[node name="Type" type="Label" parent="CanvasLayer/WaterButton"]
+layout_mode = 0
+offset_left = 3.50001
+offset_top = 2.0
+offset_right = 28.5
+offset_bottom = 12.0
+text = "water
+"
+label_settings = SubResource("LabelSettings_cp6qf")
+
+[node name="IceButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 185.0
 offset_top = 402.0
 offset_right = 233.0
@@ -129,7 +129,7 @@ scale = Vector2(10, 7)
 texture_normal = ExtResource("3_osqb2")
 metadata/_edit_group_ = true
 
-[node name="Level" type="Label" parent="IceButton"]
+[node name="Level" type="Label" parent="CanvasLayer/IceButton"]
 offset_left = 4.0
 offset_top = 1.85714
 offset_right = 21.0
@@ -137,7 +137,7 @@ offset_bottom = 11.8571
 text = "ICE"
 label_settings = SubResource("LabelSettings_4ua2m")
 
-[node name="Type" type="Label" parent="IceButton"]
+[node name="Type" type="Label" parent="CanvasLayer/IceButton"]
 layout_mode = 0
 offset_left = 26.5
 offset_top = 2.28571
@@ -148,7 +148,7 @@ text = "0
 label_settings = SubResource("LabelSettings_4ua2m")
 horizontal_alignment = 2
 
-[node name="WindButton" type="TextureButton" parent="."]
+[node name="WindButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 187.0
 offset_top = 515.0
 offset_right = 235.0
@@ -157,7 +157,7 @@ scale = Vector2(10, 7)
 texture_normal = ExtResource("3_osqb2")
 metadata/_edit_group_ = true
 
-[node name="Level" type="Label" parent="WindButton"]
+[node name="Level" type="Label" parent="CanvasLayer/WindButton"]
 offset_left = 25.9
 offset_top = 2.28571
 offset_right = 43.9
@@ -167,7 +167,7 @@ text = "0
 label_settings = SubResource("LabelSettings_wl00e")
 horizontal_alignment = 2
 
-[node name="Type" type="Label" parent="WindButton"]
+[node name="Type" type="Label" parent="CanvasLayer/WindButton"]
 layout_mode = 0
 offset_left = 3.6
 offset_top = 1.85714
@@ -176,7 +176,7 @@ offset_bottom = 11.8571
 text = "WIND"
 label_settings = SubResource("LabelSettings_x87eb")
 
-[node name="StrengthButton" type="TextureButton" parent="."]
+[node name="StrengthButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 705.0
 offset_top = 227.0
 offset_right = 753.0
@@ -185,7 +185,7 @@ scale = Vector2(10, 7)
 texture_normal = ExtResource("4_hr08i")
 metadata/_edit_group_ = true
 
-[node name="Level" type="Label" parent="StrengthButton"]
+[node name="Level" type="Label" parent="CanvasLayer/StrengthButton"]
 offset_left = 20.1
 offset_top = 5.42857
 offset_right = 37.1
@@ -195,7 +195,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_mb1bj")
 horizontal_alignment = 2
 
-[node name="Type" type="Label" parent="StrengthButton"]
+[node name="Type" type="Label" parent="CanvasLayer/StrengthButton"]
 layout_mode = 0
 offset_left = 3.8
 offset_top = 5.28571
@@ -205,7 +205,7 @@ scale = Vector2(0.5, 0.5)
 text = "strength"
 label_settings = SubResource("LabelSettings_bams5")
 
-[node name="VitalityButton" type="TextureButton" parent="."]
+[node name="VitalityButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 705.0
 offset_top = 355.0
 offset_right = 753.0
@@ -214,7 +214,7 @@ scale = Vector2(10, 7)
 texture_normal = ExtResource("4_hr08i")
 metadata/_edit_group_ = true
 
-[node name="Level" type="Label" parent="VitalityButton"]
+[node name="Level" type="Label" parent="CanvasLayer/VitalityButton"]
 offset_left = 20.1
 offset_top = 5.42857
 offset_right = 37.1
@@ -224,7 +224,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_mb1bj")
 horizontal_alignment = 2
 
-[node name="Type" type="Label" parent="VitalityButton"]
+[node name="Type" type="Label" parent="CanvasLayer/VitalityButton"]
 layout_mode = 0
 offset_left = 3.8
 offset_top = 5.28571
@@ -234,7 +234,7 @@ scale = Vector2(0.5, 0.5)
 text = "vitality"
 label_settings = SubResource("LabelSettings_bams5")
 
-[node name="UtilityButton" type="TextureButton" parent="."]
+[node name="UtilityButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 705.0
 offset_top = 481.0
 offset_right = 753.0
@@ -243,7 +243,7 @@ scale = Vector2(10, 7)
 texture_normal = ExtResource("4_hr08i")
 metadata/_edit_group_ = true
 
-[node name="Level" type="Label" parent="UtilityButton"]
+[node name="Level" type="Label" parent="CanvasLayer/UtilityButton"]
 offset_left = 20.1
 offset_top = 5.42857
 offset_right = 37.1
@@ -253,7 +253,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_mb1bj")
 horizontal_alignment = 2
 
-[node name="Type" type="Label" parent="UtilityButton"]
+[node name="Type" type="Label" parent="CanvasLayer/UtilityButton"]
 layout_mode = 0
 offset_left = 3.8
 offset_top = 5.28571
