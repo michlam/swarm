@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqcy7xkiu5nrk"]
 
-[ext_resource type="Script" path="res://src/GUI Time/gui_time.gd" id="1_ct1wp"]
+[ext_resource type="Script" path="res://src/GUI/gui_time.gd" id="1_ct1wp"]
 [ext_resource type="Texture2D" uid="uid://citjt473g3x0o" path="res://Assets/Art/UI/time_gui.png" id="2_egsok"]
 [ext_resource type="FontFile" uid="uid://c4wcqj1pqb24p" path="res://Assets/Art/Fonts/Kenney Mini Square.ttf" id="2_xtcat"]
 
