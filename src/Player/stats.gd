@@ -3,7 +3,7 @@ extends Node2D
 # MEMBER VARIABLES
 var level = 1
 var current_experience = 0
-var experience_to_next_level = 1000
+var experience_to_next_level = 100
 
 var base_speed = 250
 var speed = base_speed

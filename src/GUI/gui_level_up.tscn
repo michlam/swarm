@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2nhwa73lbpb"]
+[gd_scene load_steps=14 format=3 uid="uid://c2nhwa73lbpb"]
 
+[ext_resource type="Script" path="res://src/GUI/gui_level_up.gd" id="1_201s2"]
 [ext_resource type="Texture2D" uid="uid://bjskrihhu204u" path="res://Assets/Art/UI/LevelUp/PixelArtGUI.png" id="1_t5xt1"]
 [ext_resource type="FontFile" uid="uid://c4wcqj1pqb24p" path="res://Assets/Art/Fonts/Kenney Mini Square.ttf" id="2_m6ynf"]
 [ext_resource type="Texture2D" uid="uid://cjvy6vql86sln" path="res://Assets/Art/UI/LevelUp/ButtonUp.png" id="3_osqb2"]
@@ -43,11 +44,14 @@ font = ExtResource("2_m6ynf")
 font_size = 8
 
 [node name="GUI_Level_Up" type="Control"]
+process_mode = 2
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_201s2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -76,6 +80,7 @@ texture_normal = ExtResource("3_osqb2")
 metadata/_edit_group_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/FireButton"]
+layout_mode = 0
 offset_left = 27.4
 offset_top = 1.57143
 offset_right = 44.4
@@ -100,8 +105,10 @@ offset_right = 233.0
 offset_bottom = 304.0
 scale = Vector2(10, 7)
 texture_normal = ExtResource("3_osqb2")
+metadata/_edit_group_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/WaterButton"]
+layout_mode = 0
 offset_left = 18.5
 offset_top = 1.85714
 offset_right = 43.5
@@ -130,6 +137,7 @@ texture_normal = ExtResource("3_osqb2")
 metadata/_edit_group_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/IceButton"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 1.85714
 offset_right = 21.0
@@ -158,6 +166,7 @@ texture_normal = ExtResource("3_osqb2")
 metadata/_edit_group_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/WindButton"]
+layout_mode = 0
 offset_left = 25.9
 offset_top = 2.28571
 offset_right = 43.9
@@ -186,6 +195,7 @@ texture_normal = ExtResource("4_hr08i")
 metadata/_edit_group_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/StrengthButton"]
+layout_mode = 0
 offset_left = 20.1
 offset_top = 5.42857
 offset_right = 37.1
@@ -215,6 +225,7 @@ texture_normal = ExtResource("4_hr08i")
 metadata/_edit_group_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/VitalityButton"]
+layout_mode = 0
 offset_left = 20.1
 offset_top = 5.42857
 offset_right = 37.1
@@ -244,6 +255,7 @@ texture_normal = ExtResource("4_hr08i")
 metadata/_edit_group_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/UtilityButton"]
+layout_mode = 0
 offset_left = 20.1
 offset_top = 5.42857
 offset_right = 37.1
@@ -262,3 +274,5 @@ offset_bottom = 15.2857
 scale = Vector2(0.5, 0.5)
 text = "utility"
 label_settings = SubResource("LabelSettings_bams5")
+
+[connection signal="pressed" from="CanvasLayer/FireButton" to="." method="_on_fire_button_pressed"]

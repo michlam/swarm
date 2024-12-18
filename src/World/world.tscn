@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bgyxcpu36x6pu"]
+[gd_scene load_steps=45 format=4 uid="uid://bgyxcpu36x6pu"]
 
 [ext_resource type="PackedScene" uid="uid://ctn1cfxkbe0fq" path="res://src/tile_map_layer.tscn" id="1_5wu2h"]
 [ext_resource type="Script" path="res://src/World/world.gd" id="1_n04aa"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://src/World/experience.gd" id="15_8briq"]
 [ext_resource type="PackedScene" uid="uid://c2nhwa73lbpb" path="res://src/GUI/gui_level_up.tscn" id="15_bc3of"]
 [ext_resource type="PackedScene" uid="uid://ce57os3veu31h" path="res://src/Experience/xp_orb.tscn" id="16_gsclf"]
-[ext_resource type="Script" path="res://src/GUI/gui_level_up.gd" id="16_slq3d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyodg"]
 texture = ExtResource("3_115bq")
@@ -6093,23 +6092,13 @@ autostart = true
 
 [node name="GUI_Time" parent="." instance=ExtResource("12_clwh7")]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GUI_Level_Up" parent="CenterContainer" instance=ExtResource("15_bc3of")]
+[node name="GUI_Level_Up" parent="." instance=ExtResource("15_bc3of")]
 clip_contents = true
-layout_mode = 2
-script = ExtResource("16_slq3d")
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Experience" type="Node2D" parent="."]
 script = ExtResource("15_8briq")
