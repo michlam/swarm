@@ -12,7 +12,6 @@ func _process(delta: float) -> void:
 	pass
 	
 func create_xp_orb(amount, startPos):
-	print("Create xp orb")
 	var xp_orb = xp_orb_scene.instantiate()
 	call_deferred("add_child", xp_orb)
 	xp_orb.position = startPos

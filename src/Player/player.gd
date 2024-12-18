@@ -40,7 +40,11 @@ func check_screen_size():
 func _on_exp_detect_radius_area_entered(area: Area2D) -> void:
 	# Tell orb to come to player
 	if area.is_in_group("exp"):
-		area.go_to_player()
+		area.in_range = true
+
+func _on_exp_detect_radius_area_exited(area: Area2D) -> void:
+	if area.is_in_group("exp"):
+		area.in_range = false
 
 
 func _on_exp_collect_radius_area_entered(area: Area2D) -> void:
