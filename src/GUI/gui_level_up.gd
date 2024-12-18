@@ -9,6 +9,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if canvas.visible:
-		print("hello")
-		position = DisplayServer.screen_get_size() / 2
+	pass

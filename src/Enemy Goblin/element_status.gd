@@ -107,6 +107,5 @@ func stun():
 	stun_sprite.visible = true
 	$Stun_Timer.start(3.0)
 	
-
 func _on_stun_timeout() -> void:
 	remove_stunned()
