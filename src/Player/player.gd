@@ -36,3 +36,16 @@ func take_damage(damage):
 	
 func check_screen_size():
 	screen_size = get_viewport_rect().size
+
+func _on_exp_detect_radius_area_entered(area: Area2D) -> void:
+	# Tell orb to come to player
+	if area.is_in_group("exp"):
+		print("XP orb is in detect range")
+		area.go_to_player()
+
+
+func _on_exp_collect_radius_area_entered(area: Area2D) -> void:
+	if area.is_in_group("exp"):
+		print("XP orb is in collect range")
+		$Stats.gain_exp(area.exp_amount)
+		area.queue_free()

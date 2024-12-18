@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=66 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
@@ -574,6 +574,13 @@ _data = {
 radius = 15.9967
 height = 63.9999
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_eahyy"]
+radius = 323.169
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_asfma"]
+radius = 27.6923
+height = 86.1539
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 scale = Vector2(0.65, 0.65)
@@ -674,6 +681,17 @@ ultimate_timer = NodePath("../../Stats/UltimateTimer")
 fire_ultimate_scene = ExtResource("18_a2fbr")
 water_ultimate_scene = ExtResource("18_0pgb3")
 
+[node name="Exp_Detect_Radius" type="Area2D" parent="."]
+
+[node name="Exp_Detect_Collision" type="CollisionShape2D" parent="Exp_Detect_Radius"]
+shape = SubResource("CircleShape2D_eahyy")
+
+[node name="Exp_Collect_Radius" type="Area2D" parent="."]
+
+[node name="Exp_Collect_Collision" type="CollisionShape2D" parent="Exp_Collect_Radius"]
+position = Vector2(3.07692, -6.15385)
+shape = SubResource("CapsuleShape2D_asfma")
+
 [connection signal="timeout" from="Stats/ElementSwitchTimer" to="Stats" method="_on_element_switch_timer_timeout"]
 [connection signal="timeout" from="Stats/PassiveTimer" to="StateMachine/Idle" method="_on_ability_timer_timeout"]
 [connection signal="timeout" from="Stats/PassiveTimer" to="StateMachine/Walk" method="_on_ability_timer_timeout"]
@@ -682,3 +700,5 @@ water_ultimate_scene = ExtResource("18_0pgb3")
 [connection signal="timeout" from="Stats/UltimateTimer" to="Stats" method="_on_ultimate_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/ClickAttack" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Melee_Hitbox_Area" to="." method="_on_melee_hitbox_area_body_entered"]
+[connection signal="area_entered" from="Exp_Detect_Radius" to="." method="_on_exp_detect_radius_area_entered"]
+[connection signal="area_entered" from="Exp_Collect_Radius" to="." method="_on_exp_collect_radius_area_entered"]

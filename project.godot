@@ -28,6 +28,7 @@ window/size/viewport_height=800
 [global_group]
 
 enemies=""
+exp=""
 
 [input]
 

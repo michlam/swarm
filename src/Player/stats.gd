@@ -2,7 +2,9 @@ extends Node2D
 
 # MEMBER VARIABLES
 var level = 1
-var experience = 0
+var current_experience = 0
+var experience_to_next_level = 1000
+
 var base_speed = 250
 var speed = base_speed
 
@@ -115,3 +117,11 @@ func _on_skill_timer_timeout() -> void:
 
 func _on_ultimate_timer_timeout() -> void:
 	ultimate_on_cooldown = false
+	
+func gain_exp(amount: int):
+	current_experience += amount
+	
+	if current_experience > experience_to_next_level:
+		# level_up()
+		print("Level up to: ", level)
+		current_experience -= experience_to_next_level

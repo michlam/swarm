@@ -5,10 +5,11 @@ extends CharacterBody2D
 ######################
 @export var damage_number_scene: PackedScene
 @export var speed = 250
+@onready var experience = get_parent().find_child("Experience")
 
 var screen_size
 var is_attacking = false
-var max_health = 1000
+var max_health = 100
 var current_health = max_health
 
 func _ready() -> void:
@@ -36,6 +37,8 @@ func take_damage(damage: int, type: String):
 	current_health -= damage
 	
 	if current_health <= 0:
+		print("Goblin death")
+		experience.create_xp_orb(max_health, position)
 		death_handler()
 	
 func death_handler():
