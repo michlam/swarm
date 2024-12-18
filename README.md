@@ -11,3 +11,4 @@ The following assets were used:
 - Fonts        		https://kenney.nl/assets/kenney-fonts
 - Element Icons		https://frontierx.itch.io/element-emblems
 - Emojis       		https://joi3.itch.io/pixel-art-emoji
+- Pixel Art GUI  https://mounirtohami.itch.io/pixel-art-gui-elements
