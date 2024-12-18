@@ -12,11 +12,11 @@ var max_health = 100
 var health = max_health
 var health_regen = 0
 
-var elemental_mastery = 20.0 # Should start at 0
-var wind_level = 1 # Should start at 0
-var fire_level = 1 # Should start at 0
-var water_level = 1 # Should start at 0
-var ice_level = 1 # Should start at 0
+var elemental_mastery = 0.0 # Should start at 0
+var wind_level = 0 # Should start at 0
+var fire_level = 0 # Should start at 0
+var water_level = 0 # Should start at 0
+var ice_level = 0 # Should start at 0
 
 var attack = 10
 var crit_rate = 10

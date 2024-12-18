@@ -18,7 +18,6 @@ func end_level_up():
 	get_tree().paused = false
 
 func _on_fire_button_pressed() -> void:
-	print("fire level up button pressed")
 	if !$CanvasLayer.visible:
 		return
 	
@@ -28,6 +27,39 @@ func _on_fire_button_pressed() -> void:
 	player_stats.fire_level += 1
 	$CanvasLayer/FireButton/Level.text = str(player_stats.fire_level)
 	end_level_up()
+
+
+func _on_water_button_pressed() -> void:
+	if !$CanvasLayer.visible:
+		return
 	
+	if $CanvasLayer/WaterButton/Level.text == "5":
+		return
 	
+	player_stats.water_level += 1
+	$CanvasLayer/WaterButton/Level.text = str(player_stats.water_level)
+	end_level_up()
+
+
+func _on_ice_button_pressed() -> void:
+	if !$CanvasLayer.visible:
+		return
 	
+	if $CanvasLayer/IceButton/Level.text == "5":
+		return
+	
+	player_stats.ice_level += 1
+	$CanvasLayer/IceButton/Level.text = str(player_stats.ice_level)
+	end_level_up()
+
+
+func _on_wind_button_pressed() -> void:
+	if !$CanvasLayer.visible:
+		return
+	
+	if $CanvasLayer/WindButton/Level.text == "5":
+		return
+	
+	player_stats.wind_level += 1
+	$CanvasLayer/WindButton/Level.text = str(player_stats.wind_level)
+	end_level_up()

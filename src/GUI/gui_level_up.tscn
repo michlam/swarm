@@ -276,3 +276,6 @@ text = "utility"
 label_settings = SubResource("LabelSettings_bams5")
 
 [connection signal="pressed" from="CanvasLayer/FireButton" to="." method="_on_fire_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WaterButton" to="." method="_on_water_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/IceButton" to="." method="_on_ice_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WindButton" to="." method="_on_wind_button_pressed"]
