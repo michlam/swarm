@@ -2,25 +2,36 @@ extends State
 class_name ClickAttack
 
 @export var player: CharacterBody2D
+@export var player_stats: Node2D
 @export var ap: AnimationPlayer
 @export var sprite: AnimatedSprite2D
 
 @export var wind_blade_scene: PackedScene
 
 var mouse_position
+var number_of_attacks = 0
 
 func Enter():
 	player.velocity = Vector2.ZERO
 	find_attack_direction()
 	
-	var wind_blade_temp = wind_blade_scene.instantiate()
-	add_child(wind_blade_temp) 
+	create_wind_blade()
 	
 func Update(delta):
 	pass
 	
 func Physics_Update(delta):
 	pass
+	
+func create_wind_blade():
+	number_of_attacks += 1
+	
+	if player_stats.wind_level == 0:
+		return
+	
+	if (number_of_attacks % (6 - player_stats.wind_level) == 0):
+		var wind_blade_temp = wind_blade_scene.instantiate()
+		add_child(wind_blade_temp) 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	Transitioned.emit(self, "idle")

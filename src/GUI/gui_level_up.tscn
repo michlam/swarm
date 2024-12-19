@@ -138,15 +138,6 @@ metadata/_edit_group_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/IceButton"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 1.85714
-offset_right = 21.0
-offset_bottom = 11.8571
-text = "ICE"
-label_settings = SubResource("LabelSettings_4ua2m")
-
-[node name="Type" type="Label" parent="CanvasLayer/IceButton"]
-layout_mode = 0
 offset_left = 26.5
 offset_top = 2.28571
 offset_right = 43.5
@@ -155,6 +146,15 @@ text = "0
 "
 label_settings = SubResource("LabelSettings_4ua2m")
 horizontal_alignment = 2
+
+[node name="Type" type="Label" parent="CanvasLayer/IceButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 1.85714
+offset_right = 21.0
+offset_bottom = 11.8571
+text = "ICE"
+label_settings = SubResource("LabelSettings_4ua2m")
 
 [node name="WindButton" type="TextureButton" parent="CanvasLayer"]
 offset_left = 187.0

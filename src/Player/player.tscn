@@ -651,9 +651,10 @@ player_stats = NodePath("../../Stats")
 ap = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite2D")
 
-[node name="ClickAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "ap", "sprite")]
+[node name="ClickAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_stats", "ap", "sprite")]
 script = ExtResource("6_c6x1p")
 player = NodePath("../..")
+player_stats = NodePath("../../Stats")
 ap = NodePath("../../AnimationPlayer")
 sprite = NodePath("../../AnimatedSprite2D")
 wind_blade_scene = ExtResource("7_kmbla")
