@@ -10,8 +10,8 @@ extends CharacterBody2D
 
 var screen_size
 var is_attacking = false
-var max_health = 100
-var current_health = max_health
+var max_health
+var current_health
 
 func _ready() -> void:
 	# Spawn enemy
@@ -35,7 +35,6 @@ func take_damage(damage: int, type: String):
 	
 	# Set the damage numbers
 	damage_number.set_values_and_animate(damage, Vector2(0, -50), 60, colour)
-	print("Damage: ", damage)
 	current_health -= damage
 	
 	if current_health <= 0:

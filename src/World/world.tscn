@@ -6093,7 +6093,7 @@ world = NodePath("..")
 enemy_goblin_scene = ExtResource("2_54xj3")
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
 
 [node name="GUI_Time" parent="." instance=ExtResource("12_clwh7")]
