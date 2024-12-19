@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var speed = 250
 @onready var experience = get_parent().find_child("Experience")
 
+
 var screen_size
 var is_attacking = false
 var max_health = 100
@@ -34,6 +35,7 @@ func take_damage(damage: int, type: String):
 	
 	# Set the damage numbers
 	damage_number.set_values_and_animate(damage, Vector2(0, -50), 60, colour)
+	print("Damage: ", damage)
 	current_health -= damage
 	
 	if current_health <= 0:

@@ -131,13 +131,13 @@ func gain_exp(amount: int):
 		level_up()
 		current_experience -= experience_to_next_level
 		experience_to_next_level = get_next_level_exp()
+		print("Current Level:", level, " XP needed for next level: ", experience_to_next_level)
 		
 func get_next_level_exp():
-	return (100 * (level * level)) - (100 * level);
+	return ceil((200 * (level ** 2.2)) - (200 * level));
 
 
 func level_up():
 	level += 1
-	print("Current Level:", level)
 	get_tree().paused = true
 	gui_level_up.find_child("CanvasLayer").visible = true

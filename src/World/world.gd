@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var health_bar: TextureProgressBar = $HealthBar
-@export var enemy_goblin_scene: PackedScene
 
 var health_bar_offset = Vector2(-33, -55)
 
@@ -23,8 +22,3 @@ func process_healthbar_helper():
 
 func process_animation_helper():
 	health_bar.value = $Player/Stats.health
-
-
-func _on_mob_timer_timeout() -> void:
-	var enemy_goblin = enemy_goblin_scene.instantiate()
-	add_child(enemy_goblin) 
