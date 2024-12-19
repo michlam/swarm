@@ -3,7 +3,7 @@ extends Node2D
 # MEMBER VARIABLES
 var level = 1
 var current_experience = 0
-var experience_to_next_level = 100
+var experience_to_next_level = 200
 
 var base_speed = 250
 var speed = base_speed
@@ -38,7 +38,6 @@ var is_invincible = false
 func _ready() -> void:
 	# Set the cooldown reduction
 	update_cooldowns()
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -131,8 +130,14 @@ func gain_exp(amount: int):
 	if current_experience > experience_to_next_level:
 		level_up()
 		current_experience -= experience_to_next_level
+		experience_to_next_level = get_next_level_exp()
 		
+func get_next_level_exp():
+	return (100 * (level * level)) - (100 * level);
+
+
 func level_up():
-	print("level up")
+	level += 1
+	print("Current Level:", level)
 	get_tree().paused = true
 	gui_level_up.find_child("CanvasLayer").visible = true
