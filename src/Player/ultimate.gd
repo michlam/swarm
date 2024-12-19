@@ -13,20 +13,20 @@ var ultimate_scene
 func Enter():
 	# Need an element to use ultimate
 	if player_stats.current_element == "None":
-		pass
+		return
 	
-	if player_stats.current_element == "Fire":
+	if player_stats.current_element == "Fire" && player_stats.fire_level >= 5:
 		ultimate_complete = false
 		ultimate_scene = fire_ultimate_scene.instantiate()
 		add_child(ultimate_scene)
 		
-	if player_stats.current_element == "Ice":
+	if player_stats.current_element == "Ice" && player_stats.ice_level >= 5:
 		for node in get_tree().get_nodes_in_group("enemies"):
 			var status = node.find_child("ElementStatus")
 			status.remove_status()
 			status.stun()
 		
-	if player_stats.current_element == "Water":
+	if player_stats.current_element == "Water" && player_stats.water_level >= 5:
 		ultimate_complete = false
 		ultimate_scene = water_ultimate_scene.instantiate()
 		add_child(ultimate_scene) 

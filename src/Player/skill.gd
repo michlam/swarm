@@ -14,14 +14,14 @@ var skill_complete = true
 func Enter():
 	# Need an element to use ability
 	if player_stats.current_element == "None":
-		pass
+		return
 	
-	if player_stats.current_element == "Fire":
+	if player_stats.current_element == "Fire" && player_stats.fire_level >= 3:
 		skill_complete = false
 		skill_scene = fire_skill_scene.instantiate()
 		add_child(skill_scene) 
 		
-	if player_stats.current_element == "Ice":
+	if player_stats.current_element == "Ice" && player_stats.ice_level >= 3:
 		for node in get_tree().get_nodes_in_group("enemies"):
 			var status = node.find_child("ElementStatus")
 			if status.stunned:
@@ -34,7 +34,7 @@ func Enter():
 				skill_scene = ice_skill_scene.instantiate()
 				node.add_child(skill_scene)
 		
-	if player_stats.current_element == "Water":
+	if player_stats.current_element == "Water" && player_stats.water_level >= 3:
 		skill_scene = water_skill_scene.instantiate()
 		add_child(skill_scene)
 	
