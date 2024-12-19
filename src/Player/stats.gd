@@ -131,8 +131,8 @@ func gain_exp(amount: int):
 		level_up()
 		current_experience -= experience_to_next_level
 		experience_to_next_level = get_next_level_exp()
-		print("Current Level:", level, " XP needed for next level: ", experience_to_next_level)
-		
+
+
 func get_next_level_exp():
 	return ceil((200 * (level ** 2.2)) - (200 * level));
 

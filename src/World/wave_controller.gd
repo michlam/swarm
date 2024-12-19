@@ -29,7 +29,6 @@ func _on_mob_timer_timeout() -> void:
 	if power_budget <= 0:
 		current_wave += 1
 		power_budget = find_power_budget()
-		print("New wave: ", current_wave, " Power Budget: ", power_budget)
 
 func unlock_enemy():
 	if current_wave >= 1:

@@ -1,0 +1,146 @@
+[gd_scene load_steps=22 format=3 uid="uid://cnsdsn6c6jw12"]
+
+[ext_resource type="Script" path="res://src/Enemy Golem/enemy_golem.gd" id="1_ag51k"]
+[ext_resource type="Texture2D" uid="uid://cdp5m628qvan5" path="res://Assets/Art/Characters/Golem.png" id="1_qq5d7"]
+[ext_resource type="Texture2D" uid="uid://d18kstg2j628b" path="res://Assets/Art/Icons/Emojis_Free_Compilation.png" id="2_ektss"]
+[ext_resource type="PackedScene" uid="uid://bjo24vg80nft8" path="res://src/Damage Number/damage_number.tscn" id="2_vy68h"]
+[ext_resource type="Script" path="res://src/Enemy Golem/state_machine.gd" id="3_mpmyh"]
+[ext_resource type="Script" path="res://src/Enemy Golem/walk.gd" id="4_gmg2b"]
+[ext_resource type="Script" path="res://src/Enemy Golem/attack.gd" id="7_bnwvh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj44o"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(0, 119, 100, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqv2u"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(100, 119, 100, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc1ws"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(200, 119, 100, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jedu0"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(300, 119, 100, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixtfg"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(400, 119, 100, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po3v6"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(500, 119, 100, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okarc"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(600, 119, 100, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5n0g"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(700, 119, 100, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pilq"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(0, 17, 100, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hescv"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(100, 17, 100, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45img"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(200, 17, 100, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51u65"]
+atlas = ExtResource("1_qq5d7")
+region = Rect2(300, 17, 100, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ron2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj44o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqv2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc1ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jedu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixtfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po3v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okarc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5n0g")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pilq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hescv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45img")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51u65")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f2u8e"]
+radius = 102.0
+height = 204.0
+
+[node name="Enemy_Golem" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_ag51k")
+damage_number_scene = ExtResource("2_vy68h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ron2y")
+animation = &"Walk"
+frame_progress = 0.133881
+
+[node name="Stun_Sprite" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -33.25)
+scale = Vector2(-0.7, 0.644)
+texture = ExtResource("2_ektss")
+region_enabled = true
+region_rect = Rect2(60, 60, 20, 20)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_f2u8e")
+
+[node name="ElementStatus" type="Node2D" parent="."]
+
+[node name="ICD" type="Timer" parent="ElementStatus"]
+
+[node name="Stun_Timer" type="Timer" parent="ElementStatus"]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_mpmyh")
+initial_state = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("4_gmg2b")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("7_bnwvh")
