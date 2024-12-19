@@ -7,10 +7,11 @@ var experience_to_next_level = 100
 
 var base_speed = 250
 var speed = base_speed
+var cooldown_reduction = 1.0 # 1 for no CDR, 0 for 100% CDR
 
-var max_health = 100
+var max_health = 300
 var health = max_health
-var health_regen = 0
+var health_regen = 1
 
 var elemental_mastery = 0.0 # Should start at 0
 var wind_level = 0 # Should start at 0
@@ -23,7 +24,6 @@ var crit_rate = 10
 var crit_damage: float = 50.0
 
 var element_switch_on_cooldown = false
-var cooldown_reduction = 0
 
 var unlocked_elements = ["Fire", "Water", "Ice"] # Fire, Water, Ice
 var current_element = "Fire"
@@ -37,13 +37,18 @@ var is_invincible = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Set the cooldown reduction
-	$PassiveTimer.wait_time = 3 * ((100.0 - cooldown_reduction) / 100.0)
+	update_cooldowns()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	handle_element_switch()
+
+func update_cooldowns():
+	$PassiveTimer.wait_time = 3 * cooldown_reduction
+	$SkillTimer.wait_time = 5 * cooldown_reduction
+	$UltimateTimer.wait_time = 30 * cooldown_reduction
 
 func take_damage(amount):
 	if !is_invincible:

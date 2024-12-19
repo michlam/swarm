@@ -279,3 +279,6 @@ label_settings = SubResource("LabelSettings_bams5")
 [connection signal="pressed" from="CanvasLayer/WaterButton" to="." method="_on_water_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/IceButton" to="." method="_on_ice_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/WindButton" to="." method="_on_wind_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StrengthButton" to="." method="_on_strength_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VitalityButton" to="." method="_on_vitality_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UtilityButton" to="." method="_on_utility_button_pressed"]
