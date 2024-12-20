@@ -27,6 +27,6 @@ func Physics_Update(delta):
 	
 
 func _on_timer_timeout() -> void:
-	if golem.global_position.distance_to(player.global_position) < 400:
+	if golem.global_position.distance_to(player.global_position) < 350:
 		$Timer.stop()
 		Transitioned.emit(self, "attack")
