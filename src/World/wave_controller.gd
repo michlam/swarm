@@ -14,15 +14,6 @@ var goblin_unlocked = true
 
 @onready var spawner = $"Spawners/1"
 
-# We have a power budget to allocate to each wave.
-# Every mob just scales in HP, not damage.
-# Every time MobTimer times out, choose a mob type and location
-# For each new wave, unlock a new spawner location - global
-# For every mob created, subtract the given HP from the power budget
-# When power budget < 0:
-#	Increment current wave
-#	Find new power budget
-
 func _on_mob_timer_timeout() -> void:
 	var new_enemy = choose_enemy()
 	setup_enemy(new_enemy)
@@ -42,8 +33,7 @@ func setup_enemy(new_enemy):
 		new_enemy.max_health = current_wave * 50
 	if new_enemy.type == "Golem":
 		new_enemy.max_health = current_wave * 1000
-	
-	print(spawner.global_position)
+
 	new_enemy.global_position = spawner.global_position
 	new_enemy.current_health = new_enemy.max_health
 	world.add_child(new_enemy)
@@ -81,6 +71,9 @@ func find_power_budget():
 
 func choose_spawner():
 	var spawners = get_tree().get_nodes_in_group("spawners")
-	var index = randi_range(0, current_wave) % spawners.size()
-	print(spawners)
-	return spawners[index]
+	
+	if current_wave <= 13:
+		return spawners[current_wave - 1]
+	else:
+		var index = randi_range(0, current_wave - 1) % spawners.size()
+		return spawners[index]

@@ -17,7 +17,6 @@ func _ready() -> void:
 	# Spawn enemy
 	add_to_group("enemies")
 	screen_size = get_viewport_rect().size
-	position = 0.5 * screen_size + Vector2(100, 0)
 
 func _process(delta: float) -> void:
 	if velocity.x != 0:

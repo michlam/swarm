@@ -6085,12 +6085,46 @@ enemy_golem_scene = ExtResource("15_i8ury")
 [node name="Spawners" type="Node2D" parent="WaveController"]
 
 [node name="1" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
-position = Vector2(300, 300)
+position = Vector2(190, 190)
 
 [node name="2" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
-position = Vector2(600, 300)
+position = Vector2(900, 200)
+
+[node name="3" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(1400, 180)
+
+[node name="4" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(2000, 50)
+
+[node name="5" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(2400, 70)
+
+[node name="6" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(2600, 1000)
+
+[node name="7" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(2700, 2300)
+
+[node name="8" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(2200, 2500)
+
+[node name="9" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(1400, 2300)
+
+[node name="10" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(800, 2350)
+
+[node name="11" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(300, 2450)
+
+[node name="12" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(50, 1250)
+
+[node name="13" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(120, 900)
 
 [node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.3
 autostart = true
 
 [node name="GUI_Time" parent="." instance=ExtResource("12_clwh7")]

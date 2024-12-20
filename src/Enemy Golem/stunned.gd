@@ -17,9 +17,6 @@ func Enter():
 func Update(delta):
 	if !stunned:
 		Transitioned.emit(self, "walk")
-		
-func Physics_Update(delta):
-	pass
 
 
 func _on_stun_timer_timeout() -> void:

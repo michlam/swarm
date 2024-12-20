@@ -143,7 +143,7 @@ swirl_scene = ExtResource("6_k2g1i")
 [node name="ICD" type="Timer" parent="ElementStatus"]
 
 [node name="Stun_Timer" type="Timer" parent="ElementStatus"]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
