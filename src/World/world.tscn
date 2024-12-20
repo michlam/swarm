@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bgyxcpu36x6pu"]
+[gd_scene load_steps=44 format=4 uid="uid://bgyxcpu36x6pu"]
 
 [ext_resource type="PackedScene" uid="uid://ctn1cfxkbe0fq" path="res://src/tile_map_layer.tscn" id="1_5wu2h"]
 [ext_resource type="Script" path="res://src/World/world.gd" id="1_n04aa"]
@@ -8,15 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://db4dpj1666stt" path="res://Assets/Art/Terrain/Ground/Tilemap_Elevation.png" id="4_kdkbl"]
 [ext_resource type="Texture2D" uid="uid://c6cr04nxnwx7i" path="res://Assets/Art/Terrain/Ground/Tilemap_Flat.png" id="5_af85d"]
 [ext_resource type="Texture2D" uid="uid://bl71d0gffd44q" path="res://Assets/Art/Terrain/Water/Rocks/Rocks_01.png" id="6_dteuk"]
-[ext_resource type="Texture2D" uid="uid://d2vxxr1xntrif" path="res://Assets/Art/UI/progress bar most rounded over.png" id="6_sdk2o"]
-[ext_resource type="Texture2D" uid="uid://c81get262v7d6" path="res://Assets/Art/UI/progress bar most rounded progress red.png" id="7_bineq"]
 [ext_resource type="Texture2D" uid="uid://bl6tlvovmg8le" path="res://Assets/Art/Terrain/Bridge/Bridge_All.png" id="8_i3qq5"]
 [ext_resource type="Texture2D" uid="uid://b6yea8vfdx57c" path="res://Assets/Art/Terrain/Water/Foam/Foam.png" id="8_irksq"]
-[ext_resource type="Texture2D" uid="uid://d2640bh46wj3e" path="res://Assets/Art/UI/progress bar most rounded progress orange.png" id="8_y3ljs"]
 [ext_resource type="PackedScene" uid="uid://dqcy7xkiu5nrk" path="res://src/GUI/gui_time.tscn" id="12_clwh7"]
 [ext_resource type="Script" path="res://src/World/wave_controller.gd" id="14_itnpi"]
 [ext_resource type="Script" path="res://src/World/experience.gd" id="15_8briq"]
 [ext_resource type="PackedScene" uid="uid://c2nhwa73lbpb" path="res://src/GUI/gui_level_up.tscn" id="15_bc3of"]
+[ext_resource type="PackedScene" uid="uid://cnsdsn6c6jw12" path="res://src/Enemy Golem/enemy_golem.tscn" id="15_i8ury"]
 [ext_resource type="PackedScene" uid="uid://ce57os3veu31h" path="res://src/Experience/xp_orb.tscn" id="16_gsclf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyodg"]
@@ -6076,24 +6074,15 @@ tile_set = SubResource("TileSet_xy77c")
 y_sort_enabled = true
 position = Vector2(348, 421)
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-top_level = true
-z_index = 5
-offset_left = 493.0
-offset_top = 420.0
-offset_right = 533.0
-offset_bottom = 460.0
-texture_under = ExtResource("8_y3ljs")
-texture_over = ExtResource("6_sdk2o")
-texture_progress = ExtResource("7_bineq")
-
 [node name="WaveController" type="Node2D" parent="." node_paths=PackedStringArray("world")]
 script = ExtResource("14_itnpi")
 world = NodePath("..")
 enemy_goblin_scene = ExtResource("2_54xj3")
+enemy_golem_scene = ExtResource("15_i8ury")
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 autostart = true
 
 [node name="GUI_Time" parent="." instance=ExtResource("12_clwh7")]

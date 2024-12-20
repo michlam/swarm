@@ -6,21 +6,28 @@ class_name EnemyGolemAttack
 @export var element_status: Node2D
 @onready var player = get_parent().get_parent().get_parent().find_child("Player")
 
+@export var golem_attack_scene: PackedScene
+
 func Enter():
+	$Timer.start()
 	sprite.play("Attack")
 	if golem:
 		golem.velocity = Vector2.ZERO
 
 func Update(delta):
-	# Handle the enemy goblin moving towards the player
-	var to_player_direction = player.position - golem.position
-	golem.velocity = to_player_direction.normalized() * 30 * delta 
-	golem.move_and_collide(golem.velocity)
-	
 	# Check for stunned
 	if element_status.stunned:
 		Transitioned.emit(self, "stunned")
 		
-func Physics_Update(delta):
-	pass
+
+func _on_timer_timeout() -> void:
+	create_attack()
 	
+	# If not in range, stop timer. Transition to walk
+	if golem.global_position.distance_to(player.global_position) > 550:
+		print("Out of attack range")
+		Transitioned.emit(self, "walk")
+
+func create_attack():
+	var golem_attack = golem_attack_scene.instantiate()
+	golem.add_child(golem_attack) 

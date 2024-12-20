@@ -1,10 +1,14 @@
-[gd_scene load_steps=66 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=70 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
 [ext_resource type="Script" path="res://src/Player/stats.gd" id="2_7htfl"]
+[ext_resource type="Texture2D" uid="uid://d2640bh46wj3e" path="res://Assets/Art/UI/progress bar most rounded progress orange.png" id="2_7x3sr"]
+[ext_resource type="Texture2D" uid="uid://d2vxxr1xntrif" path="res://Assets/Art/UI/progress bar most rounded over.png" id="3_07lr4"]
 [ext_resource type="Script" path="res://src/States/State_Machine.gd" id="3_vu6g4"]
 [ext_resource type="Script" path="res://src/States/PlayerIdle.gd" id="4_ai76x"]
+[ext_resource type="Texture2D" uid="uid://c81get262v7d6" path="res://Assets/Art/UI/progress bar most rounded progress red.png" id="4_rxjvw"]
+[ext_resource type="Script" path="res://src/Player/health_bar.gd" id="5_kcouh"]
 [ext_resource type="Script" path="res://src/States/PlayerWalk.gd" id="5_u7ooh"]
 [ext_resource type="Script" path="res://src/States/PlayerClickAttack.gd" id="6_c6x1p"]
 [ext_resource type="PackedScene" uid="uid://dpgi2bk0vpt1c" path="res://src/Projectiles/wind_blade.tscn" id="7_kmbla"]
@@ -586,8 +590,24 @@ z_index = 2
 scale = Vector2(0.65, 0.65)
 script = ExtResource("1_0mebj")
 
-[node name="Stats" type="Node2D" parent="."]
+[node name="HealthBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("player", "stats")]
+top_level = true
+z_index = 5
+offset_left = -15.975
+offset_top = -53.255
+offset_right = 24.025
+offset_bottom = -13.255
+scale = Vector2(1.5, 1.5)
+texture_under = ExtResource("2_7x3sr")
+texture_over = ExtResource("3_07lr4")
+texture_progress = ExtResource("4_rxjvw")
+script = ExtResource("5_kcouh")
+player = NodePath("..")
+stats = NodePath("../Stats")
+
+[node name="Stats" type="Node2D" parent="." node_paths=PackedStringArray("health_bar_ui")]
 script = ExtResource("2_7htfl")
+health_bar_ui = NodePath("../HealthBar")
 
 [node name="ElementSwitchTimer" type="Timer" parent="Stats"]
 wait_time = 0.1

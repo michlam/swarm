@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnsdsn6c6jw12"]
+[gd_scene load_steps=26 format=3 uid="uid://cnsdsn6c6jw12"]
 
 [ext_resource type="Script" path="res://src/Enemy Golem/enemy_golem.gd" id="1_ag51k"]
 [ext_resource type="Texture2D" uid="uid://cdp5m628qvan5" path="res://Assets/Art/Characters/Golem.png" id="1_qq5d7"]
@@ -6,7 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bjo24vg80nft8" path="res://src/Damage Number/damage_number.tscn" id="2_vy68h"]
 [ext_resource type="Script" path="res://src/Enemy Golem/state_machine.gd" id="3_mpmyh"]
 [ext_resource type="Script" path="res://src/Enemy Golem/walk.gd" id="4_gmg2b"]
+[ext_resource type="Script" path="res://src/Enemy Golem/element_status.gd" id="5_6t3h6"]
+[ext_resource type="PackedScene" uid="uid://dw4cwfwjr6wfa" path="res://src/Projectiles/swirl.tscn" id="6_k2g1i"]
 [ext_resource type="Script" path="res://src/Enemy Golem/attack.gd" id="7_bnwvh"]
+[ext_resource type="Script" path="res://src/Enemy Golem/stunned.gd" id="7_hxmxk"]
+[ext_resource type="PackedScene" uid="uid://buk7akqwlqsbh" path="res://src/Enemy Golem/golem_attack.tscn" id="11_ickrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tj44o"]
 atlas = ExtResource("1_qq5d7")
@@ -120,6 +124,7 @@ animation = &"Walk"
 frame_progress = 0.133881
 
 [node name="Stun_Sprite" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
 position = Vector2(0, -33.25)
 scale = Vector2(-0.7, 0.644)
 texture = ExtResource("2_ektss")
@@ -129,18 +134,47 @@ region_rect = Rect2(60, 60, 20, 20)
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_f2u8e")
 
-[node name="ElementStatus" type="Node2D" parent="."]
+[node name="ElementStatus" type="Node2D" parent="." node_paths=PackedStringArray("enemy_sprite", "stun_sprite")]
+script = ExtResource("5_6t3h6")
+enemy_sprite = NodePath("../AnimatedSprite2D")
+stun_sprite = NodePath("../AnimatedSprite2D/Stun_Sprite")
+swirl_scene = ExtResource("6_k2g1i")
 
 [node name="ICD" type="Timer" parent="ElementStatus"]
 
 [node name="Stun_Timer" type="Timer" parent="ElementStatus"]
+wait_time = 3.0
+one_shot = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_mpmyh")
 initial_state = NodePath("Walk")
 
-[node name="Walk" type="Node" parent="StateMachine"]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("golem", "sprite", "element_status")]
 script = ExtResource("4_gmg2b")
+golem = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+element_status = NodePath("../../ElementStatus")
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Timer" type="Timer" parent="StateMachine/Walk"]
+
+[node name="Stunned" type="Node" parent="StateMachine" node_paths=PackedStringArray("golem", "sprite", "element_status")]
+script = ExtResource("7_hxmxk")
+golem = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+element_status = NodePath("../../ElementStatus")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("golem", "sprite", "element_status")]
 script = ExtResource("7_bnwvh")
+golem = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+element_status = NodePath("../../ElementStatus")
+golem_attack_scene = ExtResource("11_ickrg")
+
+[node name="Timer" type="Timer" parent="StateMachine/Attack"]
+wait_time = 2.0
+
+[connection signal="timeout" from="ElementStatus/ICD" to="ElementStatus" method="_on_icd_timeout"]
+[connection signal="timeout" from="ElementStatus/Stun_Timer" to="ElementStatus" method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Walk/Timer" to="StateMachine/Walk" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Attack/Timer" to="StateMachine/Attack" method="_on_timer_timeout"]

@@ -12,6 +12,7 @@ var screen_size
 var is_attacking = false
 var max_health
 var current_health
+var type = "Goblin"
 
 func _ready() -> void:
 	# Spawn enemy

@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://buk7akqwlqsbh"]
+
+[ext_resource type="Script" path="res://src/Enemy Golem/golem_attack.gd" id="1_5xtdt"]
+[ext_resource type="Texture2D" uid="uid://gab0ccycnh1g" path="res://Assets/Art/Projectiles/Purple Projectiless.png" id="1_v8wkk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_563em"]
+atlas = ExtResource("1_v8wkk")
+region = Rect2(0, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbreo"]
+atlas = ExtResource("1_v8wkk")
+region = Rect2(16, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej54m"]
+atlas = ExtResource("1_v8wkk")
+region = Rect2(32, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wwje"]
+atlas = ExtResource("1_v8wkk")
+region = Rect2(48, 208, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4pvo"]
+atlas = ExtResource("1_v8wkk")
+region = Rect2(64, 208, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vfyaf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_563em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbreo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej54m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wwje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4pvo")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oayik"]
+radius = 4.12311
+
+[node name="Golem_Attack" type="Area2D" node_paths=PackedStringArray("sprite")]
+z_index = 5
+scale = Vector2(4, 4)
+script = ExtResource("1_5xtdt")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_vfyaf")
+animation = &"Default"
+frame_progress = 0.154697
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oayik")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

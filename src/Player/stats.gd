@@ -9,7 +9,7 @@ var base_speed = 250
 var speed = base_speed
 var cooldown_reduction = 1.0 # 1 for no CDR, 0 for 100% CDR
 
-var max_health = 300
+var max_health = 300.0
 var health = max_health
 var health_regen = 1
 
@@ -33,6 +33,7 @@ var ultimate_on_cooldown = false
 var is_invincible = false
 
 @onready var gui_level_up = get_parent().get_parent().find_child("GUI_Level_Up")
+@export var health_bar_ui: TextureProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,6 +53,7 @@ func update_cooldowns():
 func take_damage(amount):
 	if !is_invincible:
 		health = max(0, health - amount)
+		print("Player health: ", health)
 	
 func heal(amount):
 	health = min(health + amount, max_health)
