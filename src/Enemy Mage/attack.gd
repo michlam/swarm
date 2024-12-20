@@ -25,7 +25,8 @@ func _on_timer_timeout() -> void:
 	create_attack()
 	
 	# If not in range, stop timer. Transition to walk
-	if mage.global_position.distance_to(player.global_position) > 650:
+	if mage.global_position.distance_to(player.global_position) > 550:
+		$Timer.stop()
 		Transitioned.emit(self, "walk")
 
 func create_attack():

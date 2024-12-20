@@ -119,8 +119,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ng1lk"]
-radius = 19.0
-height = 64.0
+radius = 23.0
+height = 74.0
 
 [node name="Enemy_Mage" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_0lcfv")
@@ -130,7 +130,7 @@ damage_number_scene = ExtResource("2_6ex4r")
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_8y61c")
 animation = &"Default"
-frame_progress = 0.00904767
+frame_progress = 0.272162
 
 [node name="Stun_Sprite" type="Sprite2D" parent="AnimatedSprite2D"]
 visible = false
@@ -141,7 +141,7 @@ region_enabled = true
 region_rect = Rect2(60, 60, 20, 20)
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_ng1lk")
 
 [node name="ElementStatus" type="Node2D" parent="." node_paths=PackedStringArray("enemy_sprite", "stun_sprite")]

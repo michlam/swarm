@@ -35,7 +35,7 @@ func setup_enemy(new_enemy):
 	if new_enemy.type == "Goblin":
 		new_enemy.max_health = current_wave * 100
 	if new_enemy.type == "Mage":
-		new_enemy.max_health = current_wave * 500000
+		new_enemy.max_health = current_wave * 50
 	if new_enemy.type == "Golem":
 		new_enemy.max_health = current_wave * 1000
 	
