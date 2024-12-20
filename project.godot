@@ -29,6 +29,7 @@ window/size/viewport_height=800
 
 enemies=""
 exp=""
+spawners=""
 
 [input]
 

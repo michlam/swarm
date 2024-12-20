@@ -6082,6 +6082,14 @@ enemy_mage_scene = ExtResource("11_gcmua")
 enemy_goblin_scene = ExtResource("2_54xj3")
 enemy_golem_scene = ExtResource("15_i8ury")
 
+[node name="Spawners" type="Node2D" parent="WaveController"]
+
+[node name="1" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(300, 300)
+
+[node name="2" type="Node2D" parent="WaveController/Spawners" groups=["spawners"]]
+position = Vector2(600, 300)
+
 [node name="MobTimer" type="Timer" parent="."]
 autostart = true
 
