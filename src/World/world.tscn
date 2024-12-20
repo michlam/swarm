@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bgyxcpu36x6pu"]
+[gd_scene load_steps=45 format=4 uid="uid://bgyxcpu36x6pu"]
 
 [ext_resource type="PackedScene" uid="uid://ctn1cfxkbe0fq" path="res://src/tile_map_layer.tscn" id="1_5wu2h"]
 [ext_resource type="Script" path="res://src/World/world.gd" id="1_n04aa"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bl71d0gffd44q" path="res://Assets/Art/Terrain/Water/Rocks/Rocks_01.png" id="6_dteuk"]
 [ext_resource type="Texture2D" uid="uid://bl6tlvovmg8le" path="res://Assets/Art/Terrain/Bridge/Bridge_All.png" id="8_i3qq5"]
 [ext_resource type="Texture2D" uid="uid://b6yea8vfdx57c" path="res://Assets/Art/Terrain/Water/Foam/Foam.png" id="8_irksq"]
+[ext_resource type="PackedScene" uid="uid://bph6nwky023iq" path="res://src/Enemy Mage/enemy_mage.tscn" id="11_gcmua"]
 [ext_resource type="PackedScene" uid="uid://dqcy7xkiu5nrk" path="res://src/GUI/gui_time.tscn" id="12_clwh7"]
 [ext_resource type="Script" path="res://src/World/wave_controller.gd" id="14_itnpi"]
 [ext_resource type="Script" path="res://src/World/experience.gd" id="15_8briq"]
@@ -6077,6 +6078,7 @@ position = Vector2(348, 421)
 [node name="WaveController" type="Node2D" parent="." node_paths=PackedStringArray("world")]
 script = ExtResource("14_itnpi")
 world = NodePath("..")
+enemy_mage_scene = ExtResource("11_gcmua")
 enemy_goblin_scene = ExtResource("2_54xj3")
 enemy_golem_scene = ExtResource("15_i8ury")
 

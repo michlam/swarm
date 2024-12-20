@@ -1,22 +1,20 @@
 extends Area2D
 
 
-var speed = 275
-var base_damage = 20
+var speed = 350
+var base_damage = 30
 
 @export var sprite: AnimatedSprite2D
-@onready var golem = get_parent()
-@onready var world = golem.get_parent()
+@onready var mage = get_parent()
+@onready var world = mage.get_parent()
 @onready var player = world.find_child("Player")
 
+# Direction is set by parent on creation
 var direction
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sprite.play("Default")
-	
-	direction = player.global_position - global_position
-	direction = direction.normalized()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,12 +1,14 @@
 extends Node2D
 
 @export var world: Node2D
+@export var enemy_mage_scene: PackedScene
 @export var enemy_goblin_scene: PackedScene
 @export var enemy_golem_scene: PackedScene
 
 var current_wave = 1
 var power_budget = 300
 
+var mage_unlocked = false
 var golem_unlocked = false
 var goblin_unlocked = true
 
@@ -32,6 +34,8 @@ func _on_mob_timer_timeout() -> void:
 func setup_enemy(new_enemy):
 	if new_enemy.type == "Goblin":
 		new_enemy.max_health = current_wave * 100
+	if new_enemy.type == "Mage":
+		new_enemy.max_health = current_wave * 500000
 	if new_enemy.type == "Golem":
 		new_enemy.max_health = current_wave * 1000
 	
@@ -43,15 +47,26 @@ func unlock_enemy():
 	if current_wave >= 1:
 		goblin_unlocked = true
 	if current_wave >= 5:
+		mage_unlocked = true
+	if current_wave >= 8:
 		golem_unlocked = true
 
 func choose_enemy():
 	if golem_unlocked:
-		# 3% chance of creating a tank, 97% chance of creating goblin
-		if randi_range(0, 100) <= 97:
+		# 5% chance for mage, 2% chance of golem, 93% chance of goblin
+		var chance = randi_range(0, 100)
+		if chance <= 93:
 			return enemy_goblin_scene.instantiate()
+		elif chance <= 98:
+			return enemy_mage_scene.instantiate()
 		else:
 			return enemy_golem_scene.instantiate()
+	if mage_unlocked:
+		# 5% chance of creating a mage, 95% chance of creating goblin
+		if randi_range(0, 100) <= 95:
+			return enemy_goblin_scene.instantiate()
+		else:
+			return enemy_mage_scene.instantiate()
 	elif goblin_unlocked:
 		# 100% chance of creating goblin
 		return enemy_goblin_scene.instantiate()

@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxttyfu6nv7td"]
+
+[ext_resource type="Texture2D" uid="uid://sxha76j50a8p" path="res://Assets/Art/Projectiles/Dark Blue Projectiles.png" id="1_014im"]
+[ext_resource type="Script" path="res://src/Enemy Mage/mage_attack.gd" id="1_pe6s6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw4c4"]
+atlas = ExtResource("1_014im")
+region = Rect2(176, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcpwb"]
+atlas = ExtResource("1_014im")
+region = Rect2(192, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3caaf"]
+atlas = ExtResource("1_014im")
+region = Rect2(208, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54p1x"]
+atlas = ExtResource("1_014im")
+region = Rect2(224, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2osg"]
+atlas = ExtResource("1_014im")
+region = Rect2(240, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txff2"]
+atlas = ExtResource("1_014im")
+region = Rect2(256, 304, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akliw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw4c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcpwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3caaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54p1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2osg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txff2")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 16.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33wu3"]
+radius = 4.0
+height = 8.0
+
+[node name="Mage_Attack" type="Area2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(2, 2)
+script = ExtResource("1_pe6s6")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_akliw")
+animation = &"Default"
+frame_progress = 0.592192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_33wu3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

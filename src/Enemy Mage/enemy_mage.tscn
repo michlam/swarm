@@ -1,3 +1,192 @@
-[gd_scene format=3 uid="uid://bph6nwky023iq"]
+[gd_scene load_steps=28 format=3 uid="uid://bph6nwky023iq"]
 
-[node name="Enemy_Mage" type="CharacterBody2D"]
+[ext_resource type="Script" path="res://src/Enemy Mage/enemy_mage.gd" id="1_0lcfv"]
+[ext_resource type="Texture2D" uid="uid://cx5drm2u6vivu" path="res://Assets/Art/Characters/Mage_Red.png" id="1_uf6wg"]
+[ext_resource type="Texture2D" uid="uid://d18kstg2j628b" path="res://Assets/Art/Icons/Emojis_Free_Compilation.png" id="2_5ogu0"]
+[ext_resource type="PackedScene" uid="uid://bjo24vg80nft8" path="res://src/Damage Number/damage_number.tscn" id="2_6ex4r"]
+[ext_resource type="PackedScene" uid="uid://dw4cwfwjr6wfa" path="res://src/Projectiles/swirl.tscn" id="4_jjqqd"]
+[ext_resource type="Script" path="res://src/Enemy Mage/element_status.gd" id="5_g56ek"]
+[ext_resource type="Script" path="res://src/Enemy Mage/state_machine.gd" id="6_mpenw"]
+[ext_resource type="Script" path="res://src/Enemy Mage/stunned.gd" id="8_2eia5"]
+[ext_resource type="Script" path="res://src/Enemy Mage/walk.gd" id="8_w178j"]
+[ext_resource type="Script" path="res://src/Enemy Mage/attack.gd" id="9_rtsee"]
+[ext_resource type="PackedScene" uid="uid://dxttyfu6nv7td" path="res://src/Enemy Mage/mage_attack.tscn" id="10_4o1dk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b25he"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjj4h"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukqqa"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nklm"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc8fc"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5w3n"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57s8r"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnrsp"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jncfr"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdvae"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erfgd"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu6mn"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00yut"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lpgj"]
+atlas = ExtResource("1_uf6wg")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y61c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b25he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjj4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukqqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nklm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc8fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5w3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57s8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnrsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jncfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdvae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erfgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu6mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00yut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lpgj")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 13.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ng1lk"]
+radius = 19.0
+height = 64.0
+
+[node name="Enemy_Mage" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_0lcfv")
+damage_number_scene = ExtResource("2_6ex4r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_8y61c")
+animation = &"Default"
+frame_progress = 0.00904767
+
+[node name="Stun_Sprite" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+position = Vector2(1.538, -41.273)
+scale = Vector2(-0.817, 0.751)
+texture = ExtResource("2_5ogu0")
+region_enabled = true
+region_rect = Rect2(60, 60, 20, 20)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_ng1lk")
+
+[node name="ElementStatus" type="Node2D" parent="." node_paths=PackedStringArray("enemy_sprite", "stun_sprite")]
+script = ExtResource("5_g56ek")
+enemy_sprite = NodePath("../AnimatedSprite2D")
+stun_sprite = NodePath("../AnimatedSprite2D/Stun_Sprite")
+swirl_scene = ExtResource("4_jjqqd")
+
+[node name="ICD" type="Timer" parent="ElementStatus"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Stun_Timer" type="Timer" parent="ElementStatus"]
+wait_time = 3.0
+one_shot = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_mpenw")
+initial_state = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("mage", "sprite", "element_status")]
+script = ExtResource("8_w178j")
+mage = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+element_status = NodePath("../../ElementStatus")
+
+[node name="Timer" type="Timer" parent="StateMachine/Walk"]
+
+[node name="Stunned" type="Node" parent="StateMachine" node_paths=PackedStringArray("mage", "sprite", "element_status")]
+script = ExtResource("8_2eia5")
+mage = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+element_status = NodePath("../../ElementStatus")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("mage", "sprite", "element_status")]
+script = ExtResource("9_rtsee")
+mage = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+element_status = NodePath("../../ElementStatus")
+mage_attack_scene = ExtResource("10_4o1dk")
+
+[node name="Timer" type="Timer" parent="StateMachine/Attack"]
+wait_time = 3.0
+
+[connection signal="timeout" from="ElementStatus/ICD" to="ElementStatus" method="_on_icd_timeout"]
+[connection signal="timeout" from="ElementStatus/Stun_Timer" to="ElementStatus" method="_on_stun_timeout"]
+[connection signal="timeout" from="StateMachine/Walk/Timer" to="StateMachine/Walk" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Attack/Timer" to="StateMachine/Attack" method="_on_timer_timeout"]

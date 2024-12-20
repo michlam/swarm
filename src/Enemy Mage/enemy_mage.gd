@@ -4,14 +4,15 @@ extends CharacterBody2D
 ## MEMBER VARIABLES ##
 ######################
 @export var damage_number_scene: PackedScene
-@export var speed = 200
+@export var speed = 350
 @onready var experience = get_parent().find_child("Experience")
 
-# HEALTH IS SET IN WAVE CONTROLLER
 var screen_size
+
+# HEALTH IS SET IN WAVE CONTROLLER
 var max_health
 var current_health
-var type = "Golem"
+var type = "Mage"
 
 func _ready() -> void:
 	# Spawn enemy

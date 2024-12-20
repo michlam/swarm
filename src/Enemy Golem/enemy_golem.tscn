@@ -172,7 +172,7 @@ element_status = NodePath("../../ElementStatus")
 golem_attack_scene = ExtResource("11_ickrg")
 
 [node name="Timer" type="Timer" parent="StateMachine/Attack"]
-wait_time = 2.0
+wait_time = 2.5
 
 [connection signal="timeout" from="ElementStatus/ICD" to="ElementStatus" method="_on_icd_timeout"]
 [connection signal="timeout" from="ElementStatus/Stun_Timer" to="ElementStatus" method="_on_stun_timer_timeout"]

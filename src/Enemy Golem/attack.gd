@@ -25,8 +25,7 @@ func _on_timer_timeout() -> void:
 	create_attack()
 	
 	# If not in range, stop timer. Transition to walk
-	if golem.global_position.distance_to(player.global_position) > 500:
-		print("Out of attack range")
+	if golem.global_position.distance_to(player.global_position) > 650:
 		Transitioned.emit(self, "walk")
 
 func create_attack():
