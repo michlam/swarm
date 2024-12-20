@@ -13,3 +13,4 @@ The following assets were used:
 - Emojis       		https://joi3.itch.io/pixel-art-emoji
 - Pixel Art GUI     https://mounirtohami.itch.io/pixel-art-gui-elements
 - Stone Golem       https://darkpixel-kronovi.itch.io/mecha-golem-free
+- Mage              https://creativekind.itch.io/npc-mage-free?download

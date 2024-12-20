@@ -176,5 +176,6 @@ wait_time = 2.0
 
 [connection signal="timeout" from="ElementStatus/ICD" to="ElementStatus" method="_on_icd_timeout"]
 [connection signal="timeout" from="ElementStatus/Stun_Timer" to="ElementStatus" method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="ElementStatus/Stun_Timer" to="StateMachine/Stunned" method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Walk/Timer" to="StateMachine/Walk" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Attack/Timer" to="StateMachine/Attack" method="_on_timer_timeout"]

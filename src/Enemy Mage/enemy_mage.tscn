@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bph6nwky023iq"]
+
+[node name="Enemy_Mage" type="CharacterBody2D"]

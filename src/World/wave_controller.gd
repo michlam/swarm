@@ -47,15 +47,14 @@ func unlock_enemy():
 
 func choose_enemy():
 	if golem_unlocked:
-		# 5% chance of creating a tank, 95% chance of creating goblin
-		if randi_range(0, 100) <= 95:
+		# 3% chance of creating a tank, 97% chance of creating goblin
+		if randi_range(0, 100) <= 97:
 			return enemy_goblin_scene.instantiate()
 		else:
 			return enemy_golem_scene.instantiate()
 	elif goblin_unlocked:
 		# 100% chance of creating goblin
-		#return enemy_goblin_scene.instantiate()
-		return enemy_golem_scene.instantiate()
+		return enemy_goblin_scene.instantiate()
 
 func find_power_budget():
 	return ceil(300 * (current_wave ** 2.2) - 200 * current_wave)

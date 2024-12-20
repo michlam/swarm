@@ -18,6 +18,7 @@ func Update(delta):
 	# Check for stunned
 	if element_status.stunned:
 		Transitioned.emit(self, "stunned")
+		$Timer.stop()
 		
 
 func _on_timer_timeout() -> void:

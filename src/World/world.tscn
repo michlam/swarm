@@ -6081,8 +6081,6 @@ enemy_goblin_scene = ExtResource("2_54xj3")
 enemy_golem_scene = ExtResource("15_i8ury")
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
 autostart = true
 
 [node name="GUI_Time" parent="." instance=ExtResource("12_clwh7")]
