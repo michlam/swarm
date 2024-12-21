@@ -23,7 +23,6 @@ func _on_mob_timer_timeout() -> void:
 		current_wave += 1
 		power_budget = find_power_budget()
 		spawner = choose_spawner()
-		print("Current wave: ", current_wave, " uses spawner: ", spawner)
 		unlock_enemy()
 		
 func setup_enemy(new_enemy):

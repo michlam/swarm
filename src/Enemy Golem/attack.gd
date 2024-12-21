@@ -12,7 +12,7 @@ func Enter():
 	$Timer.start()
 	sprite.play("Attack")
 	if golem:
-		golem.velocity = Vector2.ZERO
+		golem.velocity = Vector2(0.1, 0.1)
 
 func Update(delta):
 	# Check for stunned

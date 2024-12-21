@@ -12,7 +12,7 @@ func Enter():
 	$Timer.start()
 	sprite.play("Default")
 	if mage:
-		mage.velocity = Vector2.ZERO
+		mage.velocity = Vector2(0.1, 0.1)
 
 func Update(delta):
 	# Check for stunned

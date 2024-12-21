@@ -12,7 +12,7 @@ func Enter():
 	sprite.stop()
 	stunned = true
 	if golem:
-		golem.velocity = Vector2.ZERO
+		golem.velocity = Vector2(0.1, 0.1)
 
 func Update(delta):
 	if !stunned:

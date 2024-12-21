@@ -12,7 +12,7 @@ func Enter():
 	sprite.stop()
 	stunned = true
 	if mage:
-		mage.velocity = Vector2.ZERO
+		mage.velocity = Vector2(0.1, 0.1)
 
 func Update(delta):
 	if !stunned:

@@ -35,7 +35,7 @@ func Physics_Update(delta):
 		player.velocity.y -= 1
 		
 	player.velocity = player.velocity.normalized() * player_stats.speed
-	player.position += player.velocity * delta
+	player.move_and_collide(player.velocity * delta)
 
 
 func _on_ability_timer_timeout() -> void:
