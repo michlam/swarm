@@ -54,6 +54,8 @@ grow_vertical = 2
 script = ExtResource("1_201s2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(2000, 2000)
+transform = Transform2D(1, 0, 0, 1, 2000, 2000)
 
 [node name="Background" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(600, 400)
