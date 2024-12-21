@@ -129,7 +129,7 @@ func _on_ultimate_timer_timeout() -> void:
 func gain_exp(amount: int):
 	current_experience += amount
 	
-	if current_experience > experience_to_next_level:
+	if current_experience >= experience_to_next_level:
 		level_up()
 		current_experience -= experience_to_next_level
 		experience_to_next_level = get_next_level_exp()

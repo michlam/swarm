@@ -1,0 +1,415 @@
+[gd_scene load_steps=7 format=3 uid="uid://bocw88rg2eb14"]
+
+[ext_resource type="Texture2D" uid="uid://bjskrihhu204u" path="res://Assets/Art/UI/LevelUp/PixelArtGUI.png" id="1_61lud"]
+[ext_resource type="Script" path="res://src/GUI/pause_menu.gd" id="1_wkwwy"]
+[ext_resource type="FontFile" uid="uid://c4wcqj1pqb24p" path="res://Assets/Art/Fonts/Kenney Mini Square.ttf" id="2_im1tk"]
+[ext_resource type="Texture2D" uid="uid://b7wqmynuc1ij7" path="res://Assets/Art/UI/LevelUp/Patch.png" id="3_dfa42"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m04jd"]
+font = ExtResource("2_im1tk")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_cujjn"]
+font = ExtResource("2_im1tk")
+font_size = 24
+font_color = Color(0, 0.498039, 1, 1)
+
+[node name="gui_pause_menu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wkwwy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(600, 400)
+scale = Vector2(24, 24)
+texture = ExtResource("1_61lud")
+region_enabled = true
+region_rect = Rect2(0, 96, 48, 32)
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer"]
+offset_left = 92.0
+offset_top = 38.0
+offset_right = 416.0
+offset_bottom = 128.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_m04jd")
+
+[node name="Patch" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(386, 417)
+scale = Vector2(13.9, 14.169)
+texture = ExtResource("3_dfa42")
+
+[node name="Patch2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(809, 417)
+scale = Vector2(13.9, 13.9)
+texture = ExtResource("3_dfa42")
+
+[node name="Level" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/Level"]
+offset_left = 320.0
+offset_top = 252.0
+offset_right = 528.0
+offset_bottom = 282.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/Level"]
+offset_left = 240.0
+offset_top = 252.0
+offset_right = 318.0
+offset_bottom = 282.0
+text = "Level"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="Experience" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/Experience"]
+offset_left = 292.0
+offset_top = 282.0
+offset_right = 528.0
+offset_bottom = 312.0
+text = "0/20
+"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/Experience"]
+offset_left = 240.0
+offset_top = 282.0
+offset_right = 381.0
+offset_bottom = 312.0
+text = "EXP
+"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="Speed" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/Speed"]
+offset_left = 292.0
+offset_top = 312.0
+offset_right = 528.0
+offset_bottom = 342.0
+text = "250
+"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/Speed"]
+offset_left = 240.0
+offset_top = 312.0
+offset_right = 381.0
+offset_bottom = 342.0
+text = "SPD
+"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="HP" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/HP"]
+offset_left = 251.0
+offset_top = 342.0
+offset_right = 527.0
+offset_bottom = 372.0
+text = "300/500
+"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/HP"]
+offset_left = 240.0
+offset_top = 342.0
+offset_right = 381.0
+offset_bottom = 372.0
+text = "HP
+"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="HP Regen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/HP Regen"]
+offset_left = 298.0
+offset_top = 372.0
+offset_right = 528.0
+offset_bottom = 402.0
+text = "2/sec"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/HP Regen"]
+offset_left = 240.0
+offset_top = 372.0
+offset_right = 381.0
+offset_bottom = 402.0
+text = "hp regen
+"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="ATK" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/ATK"]
+offset_left = 258.0
+offset_top = 402.0
+offset_right = 528.0
+offset_bottom = 432.0
+text = "10"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/ATK"]
+offset_left = 240.0
+offset_top = 402.0
+offset_right = 381.0
+offset_bottom = 432.0
+text = "atk
+"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="CRIT RATE" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/CRIT RATE"]
+offset_left = 333.0
+offset_top = 432.0
+offset_right = 528.0
+offset_bottom = 462.0
+text = "30%"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/CRIT RATE"]
+offset_left = 240.0
+offset_top = 432.0
+offset_right = 381.0
+offset_bottom = 462.0
+text = "cr. rate"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="CRIT DMG" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/CRIT DMG"]
+offset_left = 329.0
+offset_top = 462.0
+offset_right = 528.0
+offset_bottom = 492.0
+text = "50%"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/CRIT DMG"]
+offset_left = 240.0
+offset_top = 462.0
+offset_right = 381.0
+offset_bottom = 492.0
+text = "cr. dmg"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="Elemental Mastery" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/Elemental Mastery"]
+offset_left = 272.0
+offset_top = 492.0
+offset_right = 528.0
+offset_bottom = 522.0
+text = "50%"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/Elemental Mastery"]
+offset_left = 240.0
+offset_top = 492.0
+offset_right = 381.0
+offset_bottom = 522.0
+text = "ELEM. DMG"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="CDR" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 46.0
+offset_bottom = 50.0
+
+[node name="Number" type="Label" parent="CanvasLayer/CDR"]
+offset_left = 281.0
+offset_top = 522.0
+offset_right = 528.0
+offset_bottom = 552.0
+text = "30%"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/CDR"]
+offset_left = 240.0
+offset_top = 522.0
+offset_right = 381.0
+offset_bottom = 552.0
+text = "CDR"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="Fire" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 55.0
+offset_right = 61.0
+offset_bottom = 95.0
+
+[node name="Number" type="Label" parent="CanvasLayer/Fire"]
+offset_left = 693.0
+offset_top = 270.0
+offset_right = 903.0
+offset_bottom = 300.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/Fire"]
+offset_left = 680.0
+offset_top = 270.0
+offset_right = 815.0
+offset_bottom = 300.0
+text = "Fire level:"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="Water" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 55.0
+offset_right = 61.0
+offset_bottom = 95.0
+
+[node name="Number" type="Label" parent="CanvasLayer/Water"]
+offset_left = 825.0
+offset_top = 320.0
+offset_right = 903.0
+offset_bottom = 350.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/Water"]
+offset_left = 680.0
+offset_top = 320.0
+offset_right = 815.0
+offset_bottom = 350.0
+text = "water level:"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="Ice" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 55.0
+offset_right = 61.0
+offset_bottom = 95.0
+
+[node name="Number" type="Label" parent="CanvasLayer/Ice"]
+offset_left = 825.0
+offset_top = 370.0
+offset_right = 903.0
+offset_bottom = 400.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/Ice"]
+offset_left = 680.0
+offset_top = 370.0
+offset_right = 839.0
+offset_bottom = 400.0
+text = "Ice level:"
+label_settings = SubResource("LabelSettings_cujjn")
+
+[node name="Wind" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 55.0
+offset_right = 61.0
+offset_bottom = 95.0
+
+[node name="Number" type="Label" parent="CanvasLayer/Wind"]
+offset_left = 825.0
+offset_top = 420.0
+offset_right = 903.0
+offset_bottom = 450.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_cujjn")
+horizontal_alignment = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/Wind"]
+offset_left = 680.0
+offset_top = 420.0
+offset_right = 839.0
+offset_bottom = 450.0
+text = "wind level:"
+label_settings = SubResource("LabelSettings_cujjn")
