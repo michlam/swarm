@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://b00kmqfbfo4jv"]
+[gd_scene load_steps=72 format=3 uid="uid://b00kmqfbfo4jv"]
 
 [ext_resource type="Script" path="res://src/Player/player.gd" id="1_0mebj"]
 [ext_resource type="Texture2D" uid="uid://druym16tn8s6h" path="res://Assets/Art/Characters/Warrior_Red.png" id="1_y8u2o"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://src/States/PlayerWalk.gd" id="5_u7ooh"]
 [ext_resource type="Script" path="res://src/States/PlayerClickAttack.gd" id="6_c6x1p"]
 [ext_resource type="PackedScene" uid="uid://dpgi2bk0vpt1c" path="res://src/Projectiles/wind_blade.tscn" id="7_kmbla"]
+[ext_resource type="Texture2D" uid="uid://u2txm3nmoanl" path="res://Assets/Art/Characters/Warrior_Red_Flipped.png" id="8_5pb5s"]
 [ext_resource type="Script" path="res://src/States/PlayerAbility.gd" id="9_37i3d"]
 [ext_resource type="PackedScene" uid="uid://bq31k60eyhxu4" path="res://src/Projectiles/fire_ability.tscn" id="10_7jcam"]
 [ext_resource type="PackedScene" uid="uid://btjuhr1a28d4q" path="res://src/Projectiles/ice_ability.tscn" id="11_yy8k6"]
@@ -72,29 +73,29 @@ region = Rect2(768, 384, 192, 192)
 atlas = ExtResource("1_y8u2o")
 region = Rect2(960, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k85vs"]
-atlas = ExtResource("1_y8u2o")
-region = Rect2(0, 576, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dpq4"]
+atlas = ExtResource("8_5pb5s")
+region = Rect2(960, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pj2ea"]
-atlas = ExtResource("1_y8u2o")
-region = Rect2(192, 576, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kabjx"]
+atlas = ExtResource("8_5pb5s")
+region = Rect2(768, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqxc1"]
-atlas = ExtResource("1_y8u2o")
-region = Rect2(384, 576, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o8q7"]
+atlas = ExtResource("8_5pb5s")
+region = Rect2(576, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yocd3"]
-atlas = ExtResource("1_y8u2o")
-region = Rect2(576, 576, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_it00s"]
+atlas = ExtResource("8_5pb5s")
+region = Rect2(384, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wg8og"]
-atlas = ExtResource("1_y8u2o")
-region = Rect2(768, 576, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_01i43"]
+atlas = ExtResource("8_5pb5s")
+region = Rect2(192, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwkev"]
-atlas = ExtResource("1_y8u2o")
-region = Rect2(960, 576, 192, 192)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgeaj"]
+atlas = ExtResource("8_5pb5s")
+region = Rect2(0, 384, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0os2u"]
 atlas = ExtResource("1_y8u2o")
@@ -218,22 +219,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k85vs")
+"texture": SubResource("AtlasTexture_0dpq4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pj2ea")
+"texture": SubResource("AtlasTexture_kabjx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gqxc1")
+"texture": SubResource("AtlasTexture_1o8q7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yocd3")
+"texture": SubResource("AtlasTexture_it00s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wg8og")
+"texture": SubResource("AtlasTexture_01i43")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dwkev")
+"texture": SubResource("AtlasTexture_rgeaj")
 }],
 "loop": false,
 "name": &"Attack_Hori_2",
@@ -440,6 +441,70 @@ tracks/4/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_gjxhh"]
+resource_name = "Attack_Hori_2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Melee_Hitbox_Area/Melee_Hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-21.538, -38.461), Vector2(-66.154, -10.769)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Melee_Hitbox_Area/Melee_Hitbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Melee_Hitbox_Area/Melee_Hitbox:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.5, 2.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Melee_Hitbox_Area/Melee_Hitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Melee_Hitbox_Area/Melee_Hitbox:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_dcv7a"]
 resource_name = "Attack_Up_1"
 length = 0.4
@@ -570,6 +635,7 @@ tracks/4/keys = {
 _data = {
 "Attack_Down_1": SubResource("Animation_6s18p"),
 "Attack_Hori_1": SubResource("Animation_wcgy6"),
+"Attack_Hori_2": SubResource("Animation_gjxhh"),
 "Attack_Up_1": SubResource("Animation_dcv7a"),
 "RESET": SubResource("Animation_xc1cp")
 }
@@ -629,7 +695,7 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -0.00313293
 sprite_frames = SubResource("SpriteFrames_gp387")
-animation = &"Attack_Up_1"
+animation = &"Attack_Hori_2"
 frame = 5
 frame_progress = 1.0
 

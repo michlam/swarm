@@ -12,10 +12,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	process_zooming()
 
-	# Change player facing direction
-	if velocity.x != 0:
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-
 func process_zooming():
 	# Check for scroll wheel for camera:
 	if Input.is_action_just_released("scroll_in"):

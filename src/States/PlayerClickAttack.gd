@@ -48,15 +48,21 @@ func find_attack_direction():
 	if abs(mouse_position.y - screen_center.y) < slope * abs(mouse_position.x - screen_center.x):
 		# Left and right sections
 		if mouse_position.x < screen_center.x:
-			# Left section
-			player.scale.x = -0.65
-			sprite.play("Attack_Hori_1")
-			ap.play("Attack_Hori_1")
+			# Left side
+			if sprite.flip_h: # Facing left, hit forward
+				sprite.play("Attack_Hori_1")
+				ap.play("Attack_Hori_1")
+			else: # Facing left, hit backwards
+				sprite.play("Attack_Hori_2")
+				ap.play("Attack_Hori_2")
 		else:
-			# Right section
-			player.scale.x = 0.65
-			sprite.play("Attack_Hori_1")
-			ap.play("Attack_Hori_1")
+			# Right side
+			if !sprite.flip_h: #Facing right, hit forward
+				sprite.play("Attack_Hori_1")
+				ap.play("Attack_Hori_1")
+			else: # Facing right, hit backwards
+				sprite.play("Attack_Hori_2")
+				ap.play("Attack_Hori_2")
 	else:
 		# Top and bottom sections
 		if mouse_position.y > screen_center.y:
