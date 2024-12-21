@@ -1,5 +1,18 @@
 # Swarm
- A swarm clone to learn Godot
+ A 2D beat-em-up game to learn Godot
+
+ ## Introduction
+ You are a knight and have to fight off endless hordes of goblins, mages, and golems. Defeat enemies, level up, and unlock elemental skills and abilities!
+ 
+ Based on similar games such as the Swarm gamemode from League of Legends and Hades, this was intended as an experience to learn Godot. You can download the most recent version of the game by going to [Releases](https://github.com/michlam/swarm/releases).
+
+ ## Controls
+ - Movement with WASD
+ - Melee attack with left click
+ - Switch element with right click
+ - Use elemental skill with space bar (must unlock corresponding element's level 3)
+ - Use elemental ultimate with R (must unlock corresponding element's level 5)
+ - Pause with ESC
 
 
 # Citations
