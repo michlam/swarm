@@ -25,7 +25,7 @@ func update_stats():
 	$CanvasLayer/Level/Number.text = str(player_stats.level)
 	$CanvasLayer/Experience/Number.text = str(player_stats.current_experience) + "/" + str(player_stats.experience_to_next_level)
 	$CanvasLayer/Speed/Number.text = str(player_stats.speed)
-	$CanvasLayer/HP/Number.text = str(player_stats.health) + "/" + str(player_stats.max_health)
+	$CanvasLayer/HP/Number.text = str(int(player_stats.health)) + "/" + str(player_stats.max_health)
 	$"CanvasLayer/HP Regen/Number".text = str(player_stats.health_regen) + "/sec"
 	$CanvasLayer/ATK/Number.text = str(player_stats.attack)
 	$"CanvasLayer/CRIT RATE/Number".text = str(player_stats.crit_rate) + "%"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cpiyiuhygd1a7"]
+[gd_scene load_steps=26 format=3 uid="uid://cpiyiuhygd1a7"]
 
 [ext_resource type="Script" path="res://src/Enemy Goblin/enemy_goblin.gd" id="1_gh0bu"]
 [ext_resource type="Texture2D" uid="uid://dx75oy0dmu4g" path="res://Assets/Art/Characters/Torch_Purple.png" id="2_8i3fw"]
@@ -119,6 +119,10 @@ animations = [{
 radius = 29.0
 height = 68.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yh58"]
+radius = 47.6923
+height = 95.3846
+
 [node name="Enemy_Goblin" type="CharacterBody2D" groups=["enemies"]]
 z_index = 2
 scale = Vector2(0.65, 0.65)
@@ -172,6 +176,17 @@ goblin = NodePath("../..")
 sprite = NodePath("../../AnimatedSprite2D")
 element_status = NodePath("../../ElementStatus")
 
+[node name="Hitbox_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Area"]
+shape = SubResource("CapsuleShape2D_3yh58")
+
+[node name="Timer" type="Timer" parent="Hitbox_Area"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="ElementStatus/ICD" to="ElementStatus" method="_on_icd_timeout"]
 [connection signal="timeout" from="ElementStatus/Stun_Timer" to="ElementStatus" method="_on_stun_timeout"]
 [connection signal="timeout" from="ElementStatus/Stun_Timer" to="StateMachine/Stunned" method="_on_stun_timer_timeout"]
+[connection signal="body_entered" from="Hitbox_Area" to="." method="_on_hitbox_area_body_entered"]
+[connection signal="timeout" from="Hitbox_Area/Timer" to="." method="_on_timer_timeout"]

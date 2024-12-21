@@ -11,7 +11,7 @@ var cooldown_reduction = 1.0 # 1 for no CDR, 0 for 100% CDR
 
 var max_health = 300.0
 var health = max_health
-var health_regen = 1
+var health_regen = 1.0
 
 var elemental_mastery = 0.0 # Should start at 0
 var wind_level = 0 # Should start at 0
@@ -44,6 +44,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	handle_element_switch()
+	heal(health_regen * delta)
 
 func update_cooldowns():
 	$PassiveTimer.wait_time = 3 * cooldown_reduction
@@ -54,6 +55,9 @@ func take_damage(amount):
 	if !is_invincible:
 		health = max(0, health - amount)
 		print("Player health: ", health)
+		
+		is_invincible = true
+		$InvincibleTimer.start()
 	
 func heal(amount):
 	health = min(health + amount, max_health)
@@ -134,12 +138,13 @@ func gain_exp(amount: int):
 		current_experience -= experience_to_next_level
 		experience_to_next_level = get_next_level_exp()
 
-
 func get_next_level_exp():
 	return ceil((200 * (level ** 2.2)) - (200 * level));
-
 
 func level_up():
 	level += 1
 	get_tree().paused = true
 	gui_level_up.find_child("CanvasLayer").visible = true
+
+func _on_invincible_timer_timeout() -> void:
+	is_invincible = false

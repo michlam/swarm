@@ -45,3 +45,15 @@ func death_handler():
 	hide()
 	$Hurtbox.set_deferred("disabled", true)
 	queue_free()
+
+
+func _on_hitbox_area_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage") && body.name == "Player":
+		print("Goblin collide with player")
+		body.take_damage(20)
+		$Hitbox_Area/CollisionShape2D.disabled = true
+		$Hitbox_Area/Timer.start()
+
+
+func _on_timer_timeout() -> void:
+	$Hitbox_Area/CollisionShape2D.disabled = false

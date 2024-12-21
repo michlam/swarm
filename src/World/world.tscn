@@ -6650,6 +6650,7 @@ position = Vector2(50, 1250)
 position = Vector2(120, 900)
 
 [node name="MobTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="Experience" type="Node2D" parent="."]
