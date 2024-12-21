@@ -11,3 +11,7 @@ func _process(delta: float) -> void:
 		get_tree().paused = true
 		$GUI_Pause_Menu/Timer.start()
 		$GUI_Pause_Menu/CanvasLayer.visible = true
+		
+func end_game():
+	$GUI_GameOver/CanvasLayer.visible = true
+	get_tree().paused = true

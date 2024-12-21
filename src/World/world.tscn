@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://bgyxcpu36x6pu"]
+[gd_scene load_steps=54 format=4 uid="uid://bgyxcpu36x6pu"]
 
 [ext_resource type="Script" path="res://src/World/world.gd" id="1_n04aa"]
 [ext_resource type="PackedScene" uid="uid://cpiyiuhygd1a7" path="res://src/Enemy Goblin/enemy_goblin.tscn" id="2_54xj3"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://cnsdsn6c6jw12" path="res://src/Enemy Golem/enemy_golem.tscn" id="15_i8ury"]
 [ext_resource type="PackedScene" uid="uid://ce57os3veu31h" path="res://src/Experience/xp_orb.tscn" id="16_gsclf"]
 [ext_resource type="PackedScene" uid="uid://bocw88rg2eb14" path="res://src/GUI/pause_menu.tscn" id="16_jqbj6"]
+[ext_resource type="PackedScene" uid="uid://ckf12g2jxj4ld" path="res://src/GUI/gui_hud.tscn" id="17_7xmat"]
+[ext_resource type="PackedScene" uid="uid://cbgfayu7p0xl0" path="res://src/GUI/game_over.tscn" id="19_mlkup"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyodg"]
 texture = ExtResource("3_115bq")
@@ -6659,6 +6661,8 @@ xp_orb_scene = ExtResource("16_gsclf")
 
 [node name="GUI_Time" parent="." instance=ExtResource("12_clwh7")]
 
+[node name="GUI_HUD" parent="." instance=ExtResource("17_7xmat")]
+
 [node name="GUI_Level_Up" parent="." instance=ExtResource("15_bc3of")]
 clip_contents = true
 anchors_preset = 0
@@ -6672,6 +6676,8 @@ grow_vertical = 1
 [node name="Timer" type="Timer" parent="GUI_Pause_Menu"]
 wait_time = 0.5
 one_shot = true
+
+[node name="GUI_GameOver" parent="." instance=ExtResource("19_mlkup")]
 
 [connection signal="timeout" from="MobTimer" to="WaveController" method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="GUI_Pause_Menu/Timer" to="GUI_Pause_Menu" method="_on_timer_timeout"]

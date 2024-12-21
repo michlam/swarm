@@ -13,6 +13,7 @@ var is_attacking = false
 var max_health
 var current_health
 var type = "Goblin"
+var base_damage = 10 
 
 func _ready() -> void:
 	# Spawn enemy
@@ -50,7 +51,7 @@ func death_handler():
 func _on_hitbox_area_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage") && body.name == "Player":
 		print("Goblin collide with player")
-		body.take_damage(20)
+		body.take_damage(base_damage)
 		$Hitbox_Area/CollisionShape2D.disabled = true
 		$Hitbox_Area/Timer.start()
 

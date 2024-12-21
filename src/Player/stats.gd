@@ -33,6 +33,8 @@ var ultimate_on_cooldown = false
 var is_invincible = false
 
 @onready var gui_level_up = get_parent().get_parent().find_child("GUI_Level_Up")
+@onready var world = get_parent().get_parent()
+@onready var gui_hud = world.find_child("GUI_HUD")
 @export var health_bar_ui: TextureProgressBar
 
 # Called when the node enters the scene tree for the first time.
@@ -58,6 +60,9 @@ func take_damage(amount):
 		
 		is_invincible = true
 		$InvincibleTimer.start()
+		
+		if health <= 0:
+			world.end_game()
 	
 func heal(amount):
 	health = min(health + amount, max_health)
@@ -71,6 +76,8 @@ func handle_element_switch():
 		current_element = unlocked_elements[next_index]
 		element_switch_on_cooldown = true
 		$ElementSwitchTimer.start()
+		
+		gui_hud.change_element(current_element)
 		print("Current Element: ", current_element)
 
 func _on_element_switch_timer_timeout() -> void:
