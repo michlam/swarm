@@ -51,7 +51,7 @@ func find_attack_direction():
 			# Left side
 			if sprite.flip_h: # Facing left, hit forward
 				sprite.play("Attack_Hori_1")
-				ap.play("Attack_Hori_1")
+				ap.play("Attack_Hori_2")
 			else: # Facing left, hit backwards
 				sprite.play("Attack_Hori_2")
 				ap.play("Attack_Hori_2")
@@ -62,7 +62,7 @@ func find_attack_direction():
 				ap.play("Attack_Hori_1")
 			else: # Facing right, hit backwards
 				sprite.play("Attack_Hori_2")
-				ap.play("Attack_Hori_2")
+				ap.play("Attack_Hori_1")
 	else:
 		# Top and bottom sections
 		if mouse_position.y > screen_center.y:
