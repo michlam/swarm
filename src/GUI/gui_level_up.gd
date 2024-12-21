@@ -73,7 +73,7 @@ func _on_strength_button_pressed() -> void:
 	# Strength increases attack, crit_rate, and crit_damage
 	player_stats.attack += 10
 	player_stats.crit_rate = min(100, player_stats.crit_rate + 15)
-	player_stats.crit_damage += 30
+	player_stats.crit_damage += 20
 	
 	# Update the level, no cap
 	var current_level = int($CanvasLayer/StrengthButton/Level.text)
@@ -87,7 +87,7 @@ func _on_vitality_button_pressed() -> void:
 	
 	# Vitality increases max_health and health_regen
 	player_stats.max_health += 75
-	player_stats.health_regen += 1
+	player_stats.health_regen += 2
 	
 	# Update the level, no cap
 	var current_level = int($CanvasLayer/VitalityButton/Level.text)
@@ -100,9 +100,9 @@ func _on_utility_button_pressed() -> void:
 		return
 	
 	# Utility increases speed, cooldown_reduction, and elemental_mastery 
-	player_stats.speed += 15
-	player_stats.cooldown_reduction *= 0.85
-	player_stats.elemental_mastery += 40
+	player_stats.speed += 5
+	player_stats.cooldown_reduction *= 0.8
+	player_stats.elemental_mastery += 55
 	
 	# Update the level, no cap
 	var current_level = int($CanvasLayer/UtilityButton/Level.text)
