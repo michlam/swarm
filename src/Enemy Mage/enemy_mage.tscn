@@ -123,6 +123,8 @@ radius = 23.0
 height = 74.0
 
 [node name="Enemy_Mage" type="CharacterBody2D" groups=["enemies"]]
+z_index = 2
+collision_mask = 3
 script = ExtResource("1_0lcfv")
 damage_number_scene = ExtResource("2_6ex4r")
 
